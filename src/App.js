@@ -1,14 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import './App.scss';
 
 const App = () => {
-  const [user] = React.useState({
-    id: '1',
-    name: 'robin',
-    roles: ['hahaha'],
-  });
+  const user = useSelector((state) => state.user);
+
   return (
     <div className="App">
       <h1> Hello There </h1>
