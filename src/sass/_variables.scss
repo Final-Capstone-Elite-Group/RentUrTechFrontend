@@ -1,0 +1,22 @@
+$color-primary: #98bf0e;
+$color-black: #1a1a1a;
+$color-ligthGray: #bcbdbd;
+$color-darkGray: #646464;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$global-padding: (
+  xs: 0,
+  sm: clamp(6px, 3%, 12px),
+  md: clamp(12px, 5%, 18px),
+  lg: clamp(18px, 7%, 24px),
+  xl: clamp(24px, 10%, 30px),
+  xxl: clamp(30px, 12%, 36px)
+);
