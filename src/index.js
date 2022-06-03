@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/configure_store';
 import App from './App';
-import './index.scss';
+import './sass/global.scss';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
