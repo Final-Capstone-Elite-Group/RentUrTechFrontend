@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Navigation from './components/navigation/Navigation';
+import Reserve from './components/reserve/Reserve';
 import './App.scss';
 
 const App = () => {
@@ -16,8 +17,8 @@ const App = () => {
         <Route path="/login" element={<h1>login</h1>} />
         <Route path="/signup" element={<h1>sign-up</h1>} />
         <Route path="/details/:id" element={<h1>details</h1>} />
-        <Route path="/my-reservations" element={<h1>My Reservations</h1>} />
-        <Route path="/reserve" element={<ProtectedRoute element={<h1>rent</h1>} isAllowed={!!user} />} />
+        <Route path="/my-reservations" element={<ProtectedRoute element={<h1>rMy-Reservations</h1>} isAllowed={!!user} />} />
+        <Route path="/reserve" element={<ProtectedRoute element={<Reserve />} isAllowed={!!user} />} />
         <Route path="/add-equipment" element={<ProtectedRoute element={<h1>add</h1>} isAllowed={!!user && user.roles.includes('admin')} />} />
         <Route path="/remove-equipment" element={<ProtectedRoute element={<h1>delete</h1>} isAllowed={!!user && user.roles.includes('admin')} />} />
         <Route path="*" element={<p>There nothing here: 404!</p>} />
