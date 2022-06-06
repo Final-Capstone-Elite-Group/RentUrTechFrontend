@@ -90,6 +90,47 @@ const Navigation = () => {
           </ul>
 
         </nav>
+        <div className={style.social_links}>
+          <div className={style.user_login}>
+            {user ? (
+              <Popup modal trigger={<button type="button" onClick={handleLogout}>Logout</button>}>
+                {(close) => (
+                  <>
+                    <div className={style.overlay}>
+                      <div className={style.modal}>
+                        <div className={style.logout_message}>
+                          Are you sure you want to Logout?
+                        </div>
+                        <div className={style.logout_choices}>
+                          <button type="button" onClick={handleLogout}>Confirm</button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              close();
+                            }}
+                          >
+                            Close
+                          </button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </Popup>
+            ) : (
+              <>
+                <NavLink to="/login">
+                  Login
+                </NavLink>
+                <NavLink to="/signup">
+                  Sign up
+                </NavLink>
+              </>
+            )}
+          </div>
+        
+        </div>
       </aside>
     </>
   );
