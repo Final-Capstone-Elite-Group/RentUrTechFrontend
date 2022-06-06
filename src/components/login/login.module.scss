@@ -1,0 +1,17 @@
+@import '../../sass/variables';
+
+form {
+  background-color: $color-white;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper {
+  height: 100vh;
+  background-color: $color-primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

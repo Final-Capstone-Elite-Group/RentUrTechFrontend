@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import './App.scss';
+import Login from './components/login/Login';
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -12,7 +13,7 @@ const App = () => {
       <h1> Hello There </h1>
       <Routes>
         <Route index element={<h1>home</h1>} />
-        <Route path="/login" element={<h1>login</h1>} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<h1>sign-up</h1>} />
         <Route path="/details/:id" element={<h1>details</h1>} />
         <Route path="/rent" element={<ProtectedRoute element={<h1>rent</h1>} isAllowed={!!user} />} />

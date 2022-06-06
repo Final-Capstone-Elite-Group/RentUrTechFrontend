@@ -3,7 +3,9 @@ const GET_USER = 'user/GET_USER';
 const initialState = {
   id: '1',
   name: 'robin',
-  roles: ['admin'],
+  roles: 'admin',
+  email: 'admin@admin.com',
+  password: '123456',
 };
 
 export const getUser = (payload) => ({
