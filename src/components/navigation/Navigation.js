@@ -129,7 +129,14 @@ const Navigation = () => {
               </>
             )}
           </div>
-        
+          <ul>
+            <li><a aria-label="Save" href="https://twitter.com/?lang=en"><BsTwitter /></a></li>
+            <li><a aria-label="Save" href="https://twitter.com/?lang=en"><FaFacebookF /></a></li>
+            <li><a aria-label="Save" href="https://twitter.com/?lang=en"><FaGooglePlusG /></a></li>
+            <li><a aria-label="Save" href="https://twitter.com/?lang=en"><FaVimeoV /></a></li>
+            <li><a aria-label="Save" href="https://twitter.com/?lang=en"><FaPinterestP /></a></li>
+          </ul>
+          <p className={style.copy}> &copy; Copyright 2022, RUT incorporated</p>
         </div>
       </aside>
     </>
