@@ -51,6 +51,45 @@ const Navigation = () => {
         <div className={style.logo}>
           <img src={logo} alt="logo" />
         </div>
+
+        <nav>
+          <ul className={style.nav_list}>
+            <li>
+              <NavLink
+                to="/"
+                exact
+                className={({ isActive }) => (isActive ? style.active : 'inactive')}
+              >
+                Techs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/reserve" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
+                Reserve
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/my-reservations" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
+                My Reservations
+              </NavLink>
+            </li>
+            {user?.roles === 'admin' && (
+            <>
+              <li>
+                <NavLink to="/add-equipment" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
+                  Add Techs
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/remove-equipment" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
+                  Remove Techs
+                </NavLink>
+              </li>
+            </>
+            )}
+          </ul>
+
+        </nav>
       </aside>
     </>
   );
