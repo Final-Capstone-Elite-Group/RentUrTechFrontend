@@ -1,0 +1,35 @@
+
+@use '../../sass/global.scss' as *;
+
+form {
+  width: 300px;
+  padding: 12px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(152, 191, 14, 0.8), rgba(152, 191, 14, 0.6));
+
+  h1 {
+    color: $color-black;
+  }
+}
+
+.form-group {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $color-black;
+  }
+}
