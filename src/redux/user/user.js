@@ -4,7 +4,7 @@ const LOGOUT_USER = 'user/LOGOUT_USER';
 const initialState = {
   id: '1',
   name: 'robin',
-  roles: 'admin',
+  role: 'admin',
 };
 
 export const getUser = (payload) => ({
@@ -13,7 +13,7 @@ export const getUser = (payload) => ({
 });
 
 export const logout = () => ({
-  type: GET_USER,
+  type: LOGOUT_USER,
   payload: null,
 });
 
