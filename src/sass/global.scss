@@ -1,5 +1,4 @@
 // IMPORT VARIABLES
-@use './variables';
 
 // IMPORT mixins
 @use './mixins/breakpoints';
@@ -7,3 +6,5 @@
 
 //IMPORT INDEX
 @use './index';
+
+@import './variables';
