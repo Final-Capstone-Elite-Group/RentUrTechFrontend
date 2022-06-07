@@ -67,6 +67,7 @@ aside {
 .hamburger {
   cursor: pointer;
   position: fixed;
+  z-index: 5;
   left: 20px;
   top: 20px;
   justify-content: center;
@@ -81,6 +82,7 @@ aside {
 .hamburger_white {
   cursor: pointer;
   position: fixed;
+  z-index: 5;
   left: 20px;
   top: 20px;
   justify-content: center;

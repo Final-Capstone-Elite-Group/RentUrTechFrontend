@@ -1,0 +1,73 @@
+@use '../../sass/global.scss' as *;
+
+.reserve_section {
+	height: 100vh;
+	position: relative;
+	background: url('../../images/logo1.svg') no-repeat center;
+	background-size: contain;
+}
+
+.reserve_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 20%;
+	height: 100%;
+	gap: 30px;
+	text-align: center;
+	background-color: hsla(76, 97%, 38%, 0.918);
+
+	.search_container {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		right: 20px;
+		top: 18px;
+		width: 42px;
+		background-color: white;
+		height: 34px;
+		border-radius: 50px;
+
+		svg {
+			fill: $color-primary;
+			transform: rotate(90deg);
+		}
+	}
+
+	.reserve_content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		h1 {
+			color: white;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.479);
+			padding-bottom: 15px;
+			text-transform: uppercase;
+			letter-spacing: 6px;
+		}
+		p {
+			color: white;
+			font-size: 0.8rem;
+			line-height: 2.2;
+		}
+	}
+
+	.reserve_form {
+		.city {
+			position: relative;
+			color: white;
+			height: 2.3rem;
+			width: 7rem;
+			padding: 7px;
+			border: 1px solid white;
+			border-radius: 20px;
+			background-color: $color-primary;
+			outline: none;
+		}
+    .city::-ms-expand {
+      display: none;
+    }
+	}
+}

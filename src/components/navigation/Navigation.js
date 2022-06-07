@@ -57,7 +57,6 @@ const Navigation = () => {
             <li>
               <NavLink
                 to="/"
-                exact
                 className={({ isActive }) => (isActive ? style.active : 'inactive')}
               >
                 Techs
