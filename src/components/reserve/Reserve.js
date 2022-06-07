@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Select from 'react-select';
 import { FaSearch } from 'react-icons/fa';
 import style from './reserve.module.scss';
 
@@ -25,7 +26,7 @@ const Reserve = () => {
         </div>
         <form className={style.reserve_form}>
           {/* %i[total reserved_date city equipment_id] */}
-          <select className={style.city} value={city} onChange={handleCityChange}>
+          <Select className={style.city} value={city} onChange={handleCityChange}>
             {citiesRef.current.map((city) => (
               <option value={city} key={city}>{city}</option>
             ))}
