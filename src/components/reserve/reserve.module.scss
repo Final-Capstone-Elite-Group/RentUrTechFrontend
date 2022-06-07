@@ -1,7 +1,6 @@
 @use '../../sass/global.scss' as *;
 
 .reserve_section {
-	height: 100vh;
 	position: relative;
 	background: url('../../images/logo1.svg') no-repeat center;
 	background-size: contain;
@@ -13,7 +12,8 @@
 	justify-content: center;
 	align-items: center;
 	padding: 0 20%;
-	height: 100%;
+	min-height: 100vh;
+	overflow: hidden;
 	gap: 30px;
 	text-align: center;
 	background-color: hsla(76, 97%, 38%, 0.918);
@@ -53,21 +53,88 @@
 			line-height: 2.2;
 		}
 	}
+}
 
-	.reserve_form {
-		.city {
-			position: relative;
-			color: white;
-			height: 2.3rem;
-			width: 7rem;
-			padding: 7px;
-			border: 1px solid white;
-			border-radius: 20px;
-			background-color: $color-primary;
-			outline: none;
+form {
+	display: flex;
+}
+
+.city {
+	[class$='-control'] {
+		cursor: pointer;
+		display: flex;
+		background-color: $color-primary;
+		border: 1px solid white;
+		padding: 2px 5px;
+
+		&:hover {
+			border: 1px solid $color-darkGray;
 		}
-    .city::-ms-expand {
-      display: none;
-    }
+
+		border-radius: 50px;
+		[class$='-ValueContainer'] {
+			&:focus {
+				border: none;
+				outline:none;
+			}
+
+			[class$='-singleValue'] {
+				color: white;
+				font-size: 0.8rem;
+				width: 70px;
+			}
+			[class$='-Input'] {
+				color: white;
+				width: 80px;
+				font-size: 0.8rem;
+			}
+			[class$='-placeholder'] {
+				color: white;
+				font-size: 0.8rem;
+			}
+		}
+		[class$='-IndicatorsContainer'] {
+			[class$='-indicatorSeparator'] {
+				display: none;
+			}
+			[class$='-indicatorContainer'] {
+				svg {
+					fill: white;
+				}
+			}
+		}
+	}
+	[class$='-menu'] {
+		border-radius: 10px 0 0 10px;
+		background-color: $color-darkGray;
+
+		[class$='-MenuList'] {
+			border-radius: 10px 0 0 10px;
+			max-height: 100px;
+			&::-webkit-scrollbar {
+				width: 2px;
+			}
+
+			/* Track */
+			&::-webkit-scrollbar-track {
+				background: $color-primary;
+			}
+
+			/* Handle */
+			&::-webkit-scrollbar-thumb {
+				background: $color-darkGray;
+			}
+			[class$='-option'] {
+				font-size: 0.8rem;
+				color: white;
+				cursor: pointer;
+
+				&:hover,
+				&:focus,
+				&:active {
+					color: $color-darkGray;
+				}
+			}
+		}
 	}
 }

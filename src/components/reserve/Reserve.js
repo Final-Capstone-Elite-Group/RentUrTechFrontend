@@ -1,14 +1,14 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Select from 'react-select';
 import { FaSearch } from 'react-icons/fa';
 import style from './reserve.module.scss';
 
 const Reserve = () => {
-  const [city, setCity] = useState('City');
+  // const [city, setCity] = useState('City');
   const citiesRef = useRef(['Toronto', 'Montreal', 'Vancouver', 'Ottawa', 'Winnipeg', 'Alberta', 'Manitoba']);
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
+  // const handleCityChange = (e) => {
+  //   setCity(e.target.value);
+  // };
 
   return (
     <section className={style.reserve_section}>
@@ -26,16 +26,17 @@ const Reserve = () => {
         </div>
         <form className={style.reserve_form}>
           {/* %i[total reserved_date city equipment_id] */}
-          <Select className={style.city} value={city} onChange={handleCityChange}>
+          <Select
+            className={style.city}
+            options={citiesRef.current.map((city) => (
+              { value: city, label: city }
+            ))}
+          />
+          {/* <select className={style.city}>
             {citiesRef.current.map((city) => (
               <option value={city} key={city}>{city}</option>
             ))}
-          </select>
-          <select className={style.city}>
-            {citiesRef.current.map((city) => (
-              <option value={city} key={city}>{city}</option>
-            ))}
-          </select>
+          </select> */}
         </form>
 
       </div>
