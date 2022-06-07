@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { postUserToAPI } from '../../redux/user/user';
 import style from './signup.module.scss';
 
 const Signup = () => {
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState({
     username: '',
     name: '',
@@ -10,24 +13,20 @@ const Signup = () => {
     password: '',
   });
 
-  const handleSubmit = () => {
-    axios.post('http://localhost:3000/signup',
-      {
-        user: {
-          name: user.name,
-          username: user.username,
-          password: user.password,
-          email: user.email,
-        },
-      }, { withCredentials: true })
-      .then((response) => {
-        console.log('registration res: ', response);
-      });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postUserToAPI(user));
+    setUser({
+      username: '',
+      name: '',
+      email: '',
+      password: '',
+    });
   };
 
   return (
     <div className={style.wrapper}>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit}>
         <h1>Sign up</h1>
         <div className={style['form-group']}>
           <span htmlFor="name">
@@ -53,7 +52,7 @@ const Signup = () => {
           </span>
           <input type="password" id="password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
         </div>
-        <button type="submit">Signup</button>
+        <input type="submit" value="Signup" />
       </form>
     </div>
   );
