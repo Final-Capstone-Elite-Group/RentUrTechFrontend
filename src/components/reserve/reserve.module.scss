@@ -63,6 +63,7 @@ form {
 	[class$='-control'] {
 		cursor: pointer;
 		display: flex;
+		justify-content: space-between;
 		background-color: $color-primary;
 		border: 1px solid white;
 		padding: 2px 5px;
@@ -73,11 +74,6 @@ form {
 
 		border-radius: 50px;
 		[class$='-ValueContainer'] {
-			&:focus {
-				border: none;
-				outline:none;
-			}
-
 			[class$='-singleValue'] {
 				color: white;
 				font-size: 0.8rem;
@@ -117,12 +113,12 @@ form {
 
 			/* Track */
 			&::-webkit-scrollbar-track {
-				background: $color-primary;
+				background: $color-darkGray;
 			}
 
 			/* Handle */
 			&::-webkit-scrollbar-thumb {
-				background: $color-darkGray;
+				background: white;
 			}
 			[class$='-option'] {
 				font-size: 0.8rem;
@@ -133,6 +129,7 @@ form {
 				&:focus,
 				&:active {
 					color: $color-darkGray;
+					background-color: white;
 				}
 			}
 		}

@@ -10,6 +10,16 @@ const Reserve = () => {
   //   setCity(e.target.value);
   // };
 
+  const customStyles = {
+    option: (provided, { isSelected }) => {
+      const transition = 'opacity 300ms';
+      const backgroundColor = isSelected ? '#98bf0e' : '#646464';
+      return {
+        ...provided, backgroundColor, transition,
+      };
+    },
+  };
+
   return (
     <section className={style.reserve_section}>
       <div className={style.reserve_container}>
@@ -27,7 +37,9 @@ const Reserve = () => {
         <form className={style.reserve_form}>
           {/* %i[total reserved_date city equipment_id] */}
           <Select
+            styles={customStyles}
             className={style.city}
+            placeholder="Select City"
             options={citiesRef.current.map((city) => (
               { value: city, label: city }
             ))}
