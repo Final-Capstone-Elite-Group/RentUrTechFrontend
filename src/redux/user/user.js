@@ -32,7 +32,7 @@ export const postUserToAPI = (user) => async (dispatch) => {
       if (response.status === 201) {
         toast.success('🦄 User Created!', {
           position: 'top-right',
-          autoClose: 1000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -45,7 +45,7 @@ export const postUserToAPI = (user) => async (dispatch) => {
       if (e) {
         toast.error(e.response.data.errors, {
           position: 'top-right',
-          autoClose: 1000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

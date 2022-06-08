@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,8 +8,7 @@ import Signup from './components/signup/Signup';
 import './App.scss';
 
 const App = () => {
-  const user = useSelector((state) => state.user);
-
+  const user = useSelector((state) => state.users.user);
   return (
     <div className="App">
       <Navigation />
