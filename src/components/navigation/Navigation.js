@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import { useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import {
@@ -13,27 +13,28 @@ import logo from '../../images/logo1.svg';
 import style from './navigation.module.scss';
 
 const Navigation = () => {
+  const [menuState, setMenuState] = useState(false);
+  const [locationState, setLocationState] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const menuRef = useRef(null);
-  const hamburgerRef = useRef(null);
   const location = useLocation();
-  const closedLocation = ['/add-equipment', '/reserve', '/login', '/signup', '/remove-equipment'];
+  const closedLocation = ['/', '/my-reservations', '/details'];
 
   useEffect(() => {
     if (closedLocation.includes(location.pathname)) {
-      menuRef.current.className = style.close_menu;
-      hamburgerRef.current.className = style.hamburger_white;
+      setMenuState(true);
+      setLocationState(true);
     } else {
-      hamburgerRef.current.className = style.hamburger;
+      setMenuState(false);
+      setLocationState(false);
     }
   }, [location]);
 
   const handleMenuClose = () => {
-    menuRef.current.className = style.close_menu;
+    setMenuState(false);
   };
   const handleMenuOpen = () => {
-    menuRef.current.className = style.open_menu;
+    setMenuState(true);
   };
   const handleLogout = () => {
     dispatch(logout());
@@ -41,10 +42,10 @@ const Navigation = () => {
 
   return (
     <>
-      <div ref={hamburgerRef} className={style.hamburger}>
+      <div className={locationState ? style.hamburger : style.hamburger_white}>
         <HiMenuAlt4 onClick={handleMenuOpen} />
       </div>
-      <aside ref={menuRef}>
+      <aside className={`${locationState && style.relative} ${!menuState && style.close_menu}`}>
         <button type="button" className={style.closing_button} onClick={handleMenuClose}>
           <FaAngleDoubleLeft />
         </button>
