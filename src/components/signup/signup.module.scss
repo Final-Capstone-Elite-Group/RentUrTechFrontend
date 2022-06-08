@@ -1,0 +1,84 @@
+
+@use '../../sass/global.scss' as *;
+
+form {
+  width: 350px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  border-radius: 5px;
+
+  div {
+    &:nth-child(1) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-image: url('../../images/logo1.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../images/background.jpg');
+  background-size: cover;
+
+  h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+  }
+}
+
+.form-group {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  span {
+    color: white;
+  }
+
+  input {
+    flex-grow: 1;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 1rem;
+    outline: none;
+    border: none;
+
+    &:focus {
+      border: 0.5px solid;
+    }
+  }
+}
+
+.submit {
+  background-color: rgba(255, 255, 255, 0.659);
+  width: 100px;
+  margin: 10px;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background-color ease 200ms;
+
+  &:hover {
+    background-color: rgba(195, 193, 193, 0.497);
+  }
+}
