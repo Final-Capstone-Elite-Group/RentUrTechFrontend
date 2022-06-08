@@ -1,15 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useRef } from 'react';
+// import { useDispatch } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { addDays } from 'date-fns';
 import { useForm, Controller } from 'react-hook-form';
 import { FaSearch } from 'react-icons/fa';
-// import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import toastify from '../../logic/toastify';
+import axiosInstance from '../../logic/axios_instance';
+
 import style from './reserve.module.scss';
 
 const Reserve = () => {
+  // const dispatch = useDispatch();
+
   const citiesRef = useRef([
     'Toronto',
     'Montreal',
@@ -22,25 +26,25 @@ const Reserve = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      total: '',
+      total: 23,
     },
   });
 
-  // const notify = (message) => {
-  //   setTimeout(() => {}, 5000);
-  //   toast.info(message, {
-  //     theme: 'colored',
-  //     position: 'top-right',
-  //     autoClose: 3000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: false,
-  //     draggable: true,
-  //     progress: undefined,
-  //   });
-  // };
-
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    await axiosInstance.post('/reservations', {
+      equipment_id: data.equipment_id.value,
+      city: data.city.value,
+      total: 20,
+      reserved_date: data.reserved_date,
+    })
+      .then((response) => console.log(response.data))
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const customStyles = {
     option: (provided, { isSelected }) => {
@@ -55,7 +59,6 @@ const Reserve = () => {
   return (
     <section className={style.reserve_section}>
       <div className={style.reserve_container}>
-        {/* <ToastContainer /> */}
         <div className={style.search_container}>
           <FaSearch />
         </div>
