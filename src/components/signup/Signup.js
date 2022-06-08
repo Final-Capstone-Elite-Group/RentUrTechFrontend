@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { NavLink } from 'react-router-dom';
 import { postUserToAPI } from '../../redux/user/user';
 import 'react-toastify/dist/ReactToastify.css';
-import style from '../../sass/form.module.scss';
+import style from '../../sass/shared/form.module.scss';
 
 const Signup = () => {
   const dispatch = useDispatch();

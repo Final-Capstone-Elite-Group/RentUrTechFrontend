@@ -6,11 +6,7 @@ const POST_USER = 'user/POST_USER';
 const LOGOUT_USER = 'user/LOGOUT_USER';
 
 const initialState = {
-  user: {
-    id: '1',
-    name: 'robin',
-    role: 'admin',
-  },
+  user: {},
 };
 
 export const getUser = (payload) => ({
@@ -40,7 +36,9 @@ export const postUserToAPI = (user) => async (dispatch) => {
           progress: undefined,
         });
         dispatch(postUser(response.data));
+        return true;
       }
+      return false;
     }).catch((e) => {
       if (e) {
         toast.error(e.response.data.errors, {
