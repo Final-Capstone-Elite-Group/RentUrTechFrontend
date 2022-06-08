@@ -1,5 +1,5 @@
-import axios from 'axios';
-// import { useSelector } from 'react-redux';
+import axiosInstance from '../../logic/axios_instance';
+import toastify from '../../logic/toastify';
 
 // constants
 const GET_RESERVATIONS = '/reservation/GET_RESERVATIONS';
@@ -22,21 +22,16 @@ export const makeReservation = (payload) => ({
 // Axios Instance
 // const user = useSelector((state) => state.userReducer);
 
-const instance = axios.create({
-  baseURL: 'http://localhost:3000',
-  headers: { Authorization: 'bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNjU0NzY3NTM5fQ.-wKUwhDlpvS7NWb68imOrm9xM6bey7czvGMzAoT4Iz8' },
-});
-
 // thunk action functions
 export const getReservationsFromAPI = () => async (dispatch) => {
-  await instance.get('/reservations')
-    .then((response) => console.log(response.data))
+  await axiosInstance.get('/reservations')
+    .then((response) => (response.data))
     .then((res) => {
-      console.log(res);
-      dispatch(getReservations(res));
+      dispatch(getReservations(res.data));
+      toastify('Reservations fetched successfully', 'success');
     })
     .catch((err) => {
-      console.log(err);
+      toastify(err.message, 'error');
     });
 };
 
