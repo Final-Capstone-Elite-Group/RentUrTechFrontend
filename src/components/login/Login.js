@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
-import style from './login.module.scss';
+import { ToastContainer } from 'react-toastify';
+import { NavLink } from 'react-router-dom';
+import style from '../../sass/shared/form.module.scss';
 
 const Login = () => {
-  const [userDetails, setUserDetails] = useState({
-    email: '',
+  const [user, setUser] = useState({
+    username: '',
     password: '',
   });
 
   return (
-    <div className={style.wrapper}>
-      <form>
-        <div className="form-inner">
-          <h2>Log in</h2>
-          <div className="form-group">
-            <label htmlFor="email">
-              Email:
-              <input type="email" name="email" id="email" value={userDetails.email} onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })} />
-            </label>
+    <>
+      <ToastContainer />
+      <div className={style.wrapper}>
+        <form>
+          <div>
+            <h1>Login</h1>
+            <div className={style.logo} />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">
-              Password:
-              <input type="password" name="password" id="password" value={userDetails.password} onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })} />
-            </label>
+          <div className={style['form-group']}>
+            <span htmlFor="name">
+              Username
+            </span>
+            <input type="text" id="name" name="name" value={user.name} onChange={(e) => setUser({ ...user, username: e.target.value })} required />
           </div>
-          <input type="submit" value="LOGIN" />
-        </div>
-      </form>
-    </div>
+          <div className={style['form-group']}>
+            <span htmlFor="username">
+              password
+            </span>
+            <input type="password" id="password" name="password" value={user.username} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
+          </div>
+          <input type="submit" value="Log in" className={style.submit} />
+          <NavLink to="/signup">signup</NavLink>
+        </form>
+      </div>
+    </>
   );
 };
 
