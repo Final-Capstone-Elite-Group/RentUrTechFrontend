@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { getReservations } from '../../redux/reservation/reservation';
 import apiClient from '../../logic/apiClient';
 import toastify from '../../logic/toastify';
-import style from './my-reservations.modules.scss';
+import style from './my_reservations.module.scss';
 
 const MyReservations = () => {
   const reservations = useSelector((state) => state.reservation);
@@ -13,24 +14,33 @@ const MyReservations = () => {
 
   const fetchReservations = async () => apiClient.get('/reservations')
     .then((response) => (response.data))
-    .then((res) => {
-      toastify('Reservations fetched successfully', 'success');
-      return res.data;
-    })
+    .then((res) => res.data.map((reserve) => reserve.attributes))
     .catch((err) => {
+      console.log(err);
       toastify(err.message, 'error');
     });
 
   const {
     isLoading,
+    refetch,
   } = useQuery('reservations_list', fetchReservations, {
     enabled: true,
     retry: 2,
     onSuccess: (res) => {
-      console.log(res);
+      toastify('Reservations updated successfully', 'success');
       dispatch(getReservations(res));
     },
   });
+
+  const deleteReservation = async (id) => (
+    apiClient.delete(`/reservations/${id}`).then((res) => {
+      refetch();
+      return res.data;
+    })
+      .catch((err) => {
+        toastify(err.response.data.errors, 'error');
+      })
+  );
 
   if (isLoading) {
     return <h1>Loadingcvdvfdsssssssssssssssssdgdfg</h1>;
@@ -38,7 +48,50 @@ const MyReservations = () => {
 
   return (
     <section className={style.my_reservations}>
-      {reservations.map((reserve) => <div key={reserve.id}>{reserve.id}</div>)}
+      <div className={style.my_reservations_scroll}>
+        {reservations.map((reserve) => (
+          <div key={reserve.id} className={style.reserve_container}>
+            <div className={style.img_container}>
+              <img src={reserve.equipment.url} alt="" />
+            </div>
+            <div className={style.desc_container}>
+              <h1>{reserve.equipment.title}</h1>
+              <div className={style.desc_info}>
+                <h3>
+                  <span>City :</span>
+                  {' '}
+                  {reserve.city}
+                </h3>
+                <h3>
+                  <span>Reservation Date :</span>
+                  {' '}
+                  {reserve.reserved_date}
+                </h3>
+                <h3>
+                  <span>Duration :</span>
+                  {' '}
+                  {reserve.equipment.duration}
+                  {' '}
+                  Days
+                </h3>
+                <h3>
+                  <span>Expense :</span>
+                  {' '}
+                  {reserve.total}
+                  $
+                </h3>
+              </div>
+            </div>
+            <FaRegTrashAlt
+              className={style.trash}
+              onClick={(e) => {
+                e.preventDefault();
+                deleteReservation(reserve.id);
+              }}
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
