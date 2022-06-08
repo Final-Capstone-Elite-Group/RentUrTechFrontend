@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useRef } from 'react';
-// import { useDispatch } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { addDays } from 'date-fns';
 import { useForm, Controller } from 'react-hook-form';
 import { FaSearch } from 'react-icons/fa';
-// import toastify from '../../logic/toastify';
-import axiosInstance from '../../logic/axios_instance';
+import toastify from '../../logic/toastify';
+import apiClient from '../../logic/apiClient';
 
 import style from './reserve.module.scss';
 
@@ -30,21 +29,20 @@ const Reserve = () => {
     },
   });
 
-  const onSubmit = async (data) => {
-    await axiosInstance.post('/reservations', {
+  const onSubmit = async (data) => (
+    apiClient.post('/reservations', {
       equipment_id: data.equipment_id.value,
       city: data.city.value,
       total: 20,
       reserved_date: data.reserved_date,
+    }).then((res) => {
+      toastify('Reservation created successfully', 'success');
+      return res.data;
     })
-      .then((response) => console.log(response.data))
-      .then((res) => {
-        console.log(res);
-      })
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        toastify(err.response.data.errors, 'error');
+      })
+  );
 
   const customStyles = {
     option: (provided, { isSelected }) => {
