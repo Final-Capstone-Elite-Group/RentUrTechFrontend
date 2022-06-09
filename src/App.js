@@ -8,10 +8,10 @@ const App = () => {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="App">
+    <div style={{ height: '100vh' }} className="App">
       <h1> Hello There </h1>
       <Routes>
-        <Route index element={<h1>home</h1>} />
+        <Route index element={<h1>Home</h1>} />
         <Route path="/login" element={<h1>login</h1>} />
         <Route path="/signup" element={<h1>sign-up</h1>} />
         <Route path="/details/:id" element={<h1>details</h1>} />
