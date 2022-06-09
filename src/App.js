@@ -1,20 +1,30 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Navigation from './components/navigation/Navigation';
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
 import './App.scss';
+import Carousel from './components/carousel/Carousel';
+import initState from './redux/equipment/equipmentAPI';
 
 const App = () => {
   const user = useSelector((state) => state.auth);
+  const { equipments } = useSelector((state) => state.equipment);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initState());
+  }, []);
+  console.log(equipments);
+
   return (
     <div className="App">
       <Navigation />
       <Routes>
-        <Route index element={<h1>home</h1>} />
+        <Route index element={<Carousel collection={equipments} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         {/* <Route path="/signup" element={<ProtectedRoute element={<Signup />} isAllowed={!user} redirectPath="/" />} /> */}

@@ -1,0 +1,22 @@
+@use '../../sass/mixins/breakpoints' as *;
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .cardContainer {
+    width: 100%;
+    overflow: hidden;
+    touch-action: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 100px;
+
+    @include mq(sm) {
+      flex-direction: row;
+    }
+  }
+}
