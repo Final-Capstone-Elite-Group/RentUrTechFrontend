@@ -8,14 +8,14 @@ import {
   FaGooglePlusG, FaVimeoV,
 } from 'react-icons/fa';
 import { BsTwitter } from 'react-icons/bs';
-import { logout } from '../../redux/user/user';
+import { logOut } from '../../redux/user/user';
 import logo from '../../images/logo1.svg';
 import style from './navigation.module.scss';
 
 const Navigation = () => {
   const [menuState, setMenuState] = useState(false);
   const [locationState, setLocationState] = useState(false);
-  const user = useSelector((state) => state.user);
+  const auth = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const location = useLocation();
   const closedLocation = ['/', '/my-reservations', '/details'];
@@ -37,7 +37,7 @@ const Navigation = () => {
     setMenuState(true);
   };
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logOut);
   };
 
   return (
@@ -73,7 +73,7 @@ const Navigation = () => {
                 My Reservations
               </NavLink>
             </li>
-            {user?.roles === 'admin' && (
+            {auth?.user?.role === 'admin' && (
             <>
               <li>
                 <NavLink to="/add-equipment" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
@@ -92,7 +92,7 @@ const Navigation = () => {
         </nav>
         <div className={style.social_links}>
           <div className={style.user_login}>
-            {user ? (
+            {auth?.token ? (
               <Popup modal trigger={<button type="button" onClick={handleLogout}>Logout</button>}>
                 {(close) => (
                   <>
