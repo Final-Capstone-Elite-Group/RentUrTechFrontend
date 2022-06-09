@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
+import { NavLink } from 'react-router-dom';
 import { postUserToAPI } from '../../redux/user/user';
 import 'react-toastify/dist/ReactToastify.css';
-import style from './signup.module.scss';
+import style from '../../sass/shared/form.module.scss';
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Signup = () => {
     <>
       <ToastContainer />
       <div className={style.wrapper}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style['user-form']}>
           <div>
             <h1>Sign up</h1>
             <div className={style.logo} />
@@ -60,6 +61,7 @@ const Signup = () => {
             <input type="password" id="password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
           </div>
           <input type="submit" value="Sign up" className={style.submit} />
+          <NavLink to="/login">login</NavLink>
         </form>
       </div>
     </>
