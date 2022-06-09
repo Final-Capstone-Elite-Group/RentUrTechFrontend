@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import { postUserToAPI } from '../../redux/user/user';
 import 'react-toastify/dist/ReactToastify.css';
 import style from './signup.module.scss';
@@ -28,7 +27,6 @@ const Signup = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className={style.wrapper}>
         <form onSubmit={handleSubmit}>
           <div>

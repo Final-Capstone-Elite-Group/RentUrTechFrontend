@@ -1,17 +1,12 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { saveState, removeState } from '../../logic/localStorage';
 
 const GET_USER = 'user/GET_USER';
 const POST_USER = 'user/POST_USER';
 const LOGOUT_USER = 'user/LOGOUT_USER';
 
-const initialState = {
-  user: {
-    id: '1',
-    name: 'robin',
-    role: 'admin',
-  },
-};
+const initialState = null;
 
 export const getUser = (payload) => ({
   type: GET_USER,
@@ -40,6 +35,7 @@ export const postUserToAPI = (user) => async (dispatch) => {
           progress: undefined,
         });
         dispatch(postUser(response.data));
+        saveState(response.data.token, 'token');
       }
     }).catch((e) => {
       if (e) {
@@ -56,10 +52,15 @@ export const postUserToAPI = (user) => async (dispatch) => {
     });
 };
 
-export const logout = () => ({
+export const deleteToken = () => ({
   type: LOGOUT_USER,
   payload: null,
 });
+
+export const logOut = (dispatch) => {
+  removeState('token');
+  dispatch(deleteToken());
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

@@ -1,8 +1,15 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
+import { loadState } from './localStorage';
 
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000',
-  headers: { Authorization: 'bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNjU0ODEwNTk1fQ.M4sZrC8VNZZdJ2cYl92QiBQBHulXdSKm8YAZctekabY' },
+});
+
+apiClient.interceptors.request.use((config) => {
+  const token = loadState('token');
+  config.headers.Authorization = token ? `Bearer ${token}` : '';
+  return config;
 });
 
 export default apiClient;
