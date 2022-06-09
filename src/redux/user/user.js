@@ -35,10 +35,7 @@ export const authenticateUser = (user) => async (dispatch) => {
         dispatch(login(res.data));
         localStorage.setItem(
           'authentication',
-          JSON.stringify({
-            user: res.data.user,
-            auth_token: res.data.auth_token,
-          }),
+          JSON.stringify(res.data),
         );
       }
     }).catch((e) => {
