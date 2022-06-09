@@ -5,7 +5,7 @@ export const equipmentSlice = createSlice({
   initialState: { equipments: [] },
   reducers: {
     initEquipment({ equipments }, action) {
-      equipments.push(action.payload);
+      equipments.push(...action.payload);
     },
   },
 });

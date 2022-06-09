@@ -159,9 +159,7 @@ Carousel.propTypes = {
       created_at: PropTypes.string,
       updated_at: PropTypes.string,
       image: PropTypes.shape({
-        byte_size: PropTypes.number,
         url: PropTypes.string,
-        name: PropTypes.string,
       }),
     }),
   })).isRequired,

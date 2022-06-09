@@ -32,7 +32,7 @@
       padding-top: 55%;
       border-radius: 50%;
       position: relative;
-      background-color: $color-ligthGray;
+      background-color: $color-lightGray;
 
       figure {
         width: 100%;
@@ -62,7 +62,7 @@
     align-items: center;
 
     .separator {
-      color: $color-ligthGray;
+      color: $color-lightGray;
       font-size: 1.3rem;
       height: fit-content(0);
       margin-block: 0.5rem 1rem;
@@ -86,8 +86,8 @@
 
     .iconWrapper {
       border-radius: 50%;
-      border: 3px solid $color-ligthGray;
-      color: $color-ligthGray;
+      border: 3px solid $color-lightGray;
+      color: $color-lightGray;
       width: 40px;
       height: 40px;
       position: relative;
@@ -97,7 +97,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%) translateY(-50%);
-        color: $color-ligthGray;
+        color: $color-lightGray;
         transition: 250ms ease;
 
         &:hover {
