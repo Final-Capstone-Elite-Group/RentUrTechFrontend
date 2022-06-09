@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Navigation from './components/navigation/Navigation';
 import Signup from './components/signup/Signup';
-import './App.scss';
 import Login from './components/login/Login';
+import './App.scss';
 
 const App = () => {
-  const user = useSelector((state) => state.users.user);
+  const user = useSelector((state) => state.auth);
+  console.log(user);
   return (
     <div className="App">
       <Navigation />
