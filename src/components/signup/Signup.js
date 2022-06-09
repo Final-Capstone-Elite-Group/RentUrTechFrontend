@@ -31,7 +31,7 @@ const Signup = () => {
     <>
       <ToastContainer />
       <div className={style.wrapper}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style['user-form']}>
           <div>
             <h1>Sign up</h1>
             <div className={style.logo} />
