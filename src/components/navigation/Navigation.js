@@ -15,7 +15,7 @@ import style from './navigation.module.scss';
 const Navigation = () => {
   const [menuState, setMenuState] = useState(false);
   const [locationState, setLocationState] = useState(false);
-  const auth = useSelector((state) => state.users);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
   const closedLocation = ['/', '/my-reservations', '/details'];

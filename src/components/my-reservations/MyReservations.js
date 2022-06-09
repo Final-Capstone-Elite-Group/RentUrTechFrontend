@@ -14,7 +14,10 @@ const MyReservations = () => {
 
   const fetchReservations = async () => apiClient.get('/reservations')
     .then((response) => (response.data))
-    .then((res) => res.data.map((reserve) => reserve.attributes))
+    .then((res) => {
+      toastify('Reservations updated successfully', 'success');
+      return res.data.map((reserve) => reserve.attributes);
+    })
     .catch((err) => {
       console.log(err);
       toastify(err.message, 'error');
@@ -27,7 +30,6 @@ const MyReservations = () => {
     enabled: true,
     retry: 2,
     onSuccess: (res) => {
-      toastify('Reservations updated successfully', 'success');
       dispatch(getReservations(res));
     },
   });
@@ -49,13 +51,14 @@ const MyReservations = () => {
   return (
     <section className={style.my_reservations}>
       <div className={style.my_reservations_scroll}>
+        <h1>Active Reservations</h1>
         {reservations.map((reserve) => (
           <div key={reserve.id} className={style.reserve_container}>
             <div className={style.img_container}>
               <img src={reserve.equipment.url} alt="" />
             </div>
             <div className={style.desc_container}>
-              <h1>{reserve.equipment.title}</h1>
+              <h2>{reserve.equipment.title}</h2>
               <div className={style.desc_info}>
                 <h3>
                   <span>City :</span>

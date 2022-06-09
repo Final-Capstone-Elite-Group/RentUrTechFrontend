@@ -7,8 +7,8 @@ const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use((config) => {
-  const token = loadState('token');
-  config.headers.Authorization = token ? `Bearer ${token}` : '';
+  const auth = loadState('auth');
+  config.headers.Authorization = auth ? `Bearer ${auth.token}` : '';
   return config;
 });
 

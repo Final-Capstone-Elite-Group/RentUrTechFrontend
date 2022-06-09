@@ -18,7 +18,7 @@ const App = () => {
     <div className="App">
       <Navigation />
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         theme="dark"
         autoClose={1500}
         hideProgressBar={false}

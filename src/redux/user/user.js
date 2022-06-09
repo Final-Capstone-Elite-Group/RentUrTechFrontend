@@ -32,11 +32,15 @@ export const authenticateUser = (user) => async (dispatch) => {
     .then((res) => {
       if (res.status === 200) {
         toastify('🦄 Logged in successfully!', 'success');
-        dispatch(login(res.data));
-        saveState(response.data, 'auth');
+        const user = {
+          user: res.data.user,
+          token: res.data.auth_token,
+        };
+        dispatch(login(user));
+        saveState(user, 'auth');
       }
     }).catch((e) => {
-      console.log(e);
+      toastify(e.response.data.errors, 'error');
     });
 };
 
@@ -62,7 +66,7 @@ export const deleteToken = () => ({
 });
 
 export const logOut = (dispatch) => {
-  removeState('token');
+  removeState('auth');
   dispatch(deleteToken());
 };
 

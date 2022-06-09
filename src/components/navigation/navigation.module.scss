@@ -237,4 +237,8 @@ aside {
 
 .relative {
   position: relative;
+  @include mq('sm', max) {
+   position: fixed;
+  }
+
 }

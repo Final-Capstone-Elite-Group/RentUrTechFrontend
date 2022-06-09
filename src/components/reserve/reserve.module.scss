@@ -42,6 +42,10 @@
 		margin-top: 90px;
 		display: flex;
 		flex-direction: column;
+		@include mq('md', max) {
+			font-size: 0.9rem;
+		}
+
 		gap: 20px;
 		h1 {
 			color: white;
@@ -54,6 +58,9 @@
 			color: white;
 			font-size: 0.8rem;
 			line-height: 2.2;
+			@include mq('md', max) {
+				font-size: 0.6rem;
+			}
 		}
 	}
 }
@@ -88,15 +95,24 @@
 				color: white;
 				font-size: 0.8rem;
 				width: 80px;
+				@include mq('md', max) {
+					font-size: 0.6rem;
+				}
 			}
 			[class$='-Input'] {
 				color: white;
 				width: 80px;
 				font-size: 0.8rem;
+				@include mq('md', max) {
+					font-size: 0.6rem;
+				}
 			}
 			[class$='-placeholder'] {
 				color: white;
 				font-size: 0.8rem;
+				@include mq('md', max) {
+					font-size: 0.6rem;
+				}
 			}
 		}
 		[class$='-IndicatorsContainer'] {
@@ -134,6 +150,9 @@
 				font-size: 0.8rem;
 				color: white;
 				cursor: pointer;
+				@include mq('md', max) {
+					font-size: 0.6rem;
+				}
 
 				&:hover,
 				&:active {
@@ -154,6 +173,9 @@
 	width: 150px;
 	border: none;
 	transition: all 0.2s ease-in;
+	@include mq('md', max) {
+		font-size: 0.6rem;
+	}
 
 	&:hover {
 		background-color: $color-darkGray;
@@ -169,9 +191,17 @@
 	border-radius: 50px;
 	border: 1px solid white;
 	background-color: $color-primary;
+	@include mq('md', max) {
+		font-size: 0.6rem;
+		width: 145px;
+		height: 40px;
+	}
 
 	&::placeholder {
-		color: white
+		color: white;
+		@include mq('md', max) {
+			font-size: 0.6rem;
+		}
 	}
 
 	&:focus-within, &:hover {
