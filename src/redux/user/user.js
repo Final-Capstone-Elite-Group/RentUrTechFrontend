@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 
 const GET_USER = 'user/GET_USER';
 const POST_USER = 'user/POST_USER';
+const LOGIN_USER = 'user/LOGIN_USER';
 const LOGOUT_USER = 'user/LOGOUT_USER';
 
 const initialState = {
@@ -18,6 +19,32 @@ export const postUser = (payload) => ({
   type: POST_USER,
   payload,
 });
+
+export const login = (payload) => ({
+  type: LOGIN_USER,
+  payload,
+});
+
+export const authenticateUser = (user) => async (dispatch) => {
+  await axios.post('http://localhost:3000/login', {
+    username: user.username,
+    password: user.password,
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch(login(res.data));
+        localStorage.setItem(
+          'authentication',
+          JSON.stringify({
+            user: res.data.user,
+            auth_token: res.data.auth_token,
+          }),
+        );
+      }
+    }).catch((e) => {
+      console.log(e);
+    });
+};
 
 export const postUserToAPI = (user) => async (dispatch) => {
   await axios.post('http://localhost:3000/signup',
@@ -36,9 +63,7 @@ export const postUserToAPI = (user) => async (dispatch) => {
           progress: undefined,
         });
         dispatch(postUser(response.data));
-        return true;
       }
-      return false;
     }).catch((e) => {
       if (e) {
         toast.error(e.response.data.errors, {
@@ -59,20 +84,23 @@ export const logout = () => ({
   payload: null,
 });
 
-const reducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER: {
       return action.payload;
     }
-    case LOGOUT_USER: {
-      return null;
-    }
     case POST_USER: {
       return { ...action.payload };
+    }
+    case LOGIN_USER: {
+      return action.payload;
+    }
+    case LOGOUT_USER: {
+      return null;
     }
     default:
       return state;
   }
 };
 
-export default reducer;
+export default authReducer;
