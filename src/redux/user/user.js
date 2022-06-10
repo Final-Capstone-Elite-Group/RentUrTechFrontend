@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import toastify from '../../logic/toastify';
+import { loadState, saveState, removeState } from '../../logic/localStorage';
 
 const GET_USER = 'user/GET_USER';
 const POST_USER = 'user/POST_USER';
 const LOGIN_USER = 'user/LOGIN_USER';
 const LOGOUT_USER = 'user/LOGOUT_USER';
 
-const initialState = {
-  user: {},
-};
+const initialState = loadState('auth');
 
 export const getUser = (payload) => ({
   type: GET_USER,
@@ -32,14 +31,16 @@ export const authenticateUser = (user) => async (dispatch) => {
   })
     .then((res) => {
       if (res.status === 200) {
-        dispatch(login(res.data));
-        localStorage.setItem(
-          'authentication',
-          JSON.stringify(res.data),
-        );
+        toastify('🦄 Logged in successfully!', 'success');
+        const user = {
+          user: res.data.user,
+          token: res.data.auth_token,
+        };
+        dispatch(login(user));
+        saveState(user, 'auth');
       }
     }).catch((e) => {
-      console.log(e);
+      toastify(e.response.data.errors, 'error');
     });
 };
 
@@ -50,36 +51,24 @@ export const postUserToAPI = (user) => async (dispatch) => {
     })
     .then((response) => {
       if (response.status === 201) {
-        toast.success('🦄 User Created!', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toastify('🦄 User Created!', 'success');
         dispatch(postUser(response.data));
+        saveState(response.data, 'auth');
       }
     }).catch((e) => {
-      if (e) {
-        toast.error(e.response.data.errors, {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
+      toastify(e.response.data.errors, 'error');
     });
 };
 
-export const logout = () => ({
+export const deleteToken = () => ({
   type: LOGOUT_USER,
   payload: null,
 });
+
+export const logOut = (dispatch) => {
+  removeState('auth');
+  dispatch(deleteToken());
+};
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
