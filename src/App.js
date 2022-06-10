@@ -19,7 +19,6 @@ const App = () => {
   useEffect(() => {
     dispatch(initState());
   }, []);
-  console.log(user);
 
   return (
     <div className="App">
