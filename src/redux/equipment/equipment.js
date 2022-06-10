@@ -1,11 +1,12 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 export const equipmentSlice = createSlice({
   name: 'equipment',
   initialState: { equipments: [] },
   reducers: {
-    initEquipment({ equipments }, action) {
-      equipments.push(...action.payload);
+    initEquipment(state, action) {
+      state.equipments = action.payload;
     },
   },
 });

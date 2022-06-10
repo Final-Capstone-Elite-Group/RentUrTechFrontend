@@ -1,18 +1,21 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
+import { useQuery } from 'react-query';
 import { addDays } from 'date-fns';
 import { useForm, Controller } from 'react-hook-form';
 import { FaSearch } from 'react-icons/fa';
+import logo from '../../images/logo1.svg';
 import toastify from '../../logic/toastify';
 import apiClient from '../../logic/apiClient';
+import { initEquipment } from '../../redux/equipment/equipment';
 
 import style from './reserve.module.scss';
 
 const Reserve = () => {
-  // const dispatch = useDispatch();
-
+  const equipments = useSelector((state) => state.equipment.equipments);
   const citiesRef = useRef([
     'Toronto',
     'Montreal',
@@ -22,10 +25,33 @@ const Reserve = () => {
     'Alberta',
     'Manitoba',
   ]);
+  const [bgImg, setbgImg] = useState(logo);
+  const [duration, setDuration] = useState();
+  const [cost, setCost] = useState(0);
+  const [datesReserved, setDatesReserved] = useState([]);
+  const dispatch = useDispatch();
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      total: 23,
+  const {
+    control, handleSubmit, formState: { errors },
+  } = useForm();
+
+  const fetchReservations = async () => apiClient.get('/equipments')
+    .then((response) => (response.data))
+    .then((res) => {
+      toastify('Equipment updated successfully', 'success');
+      return res.data.map((equipment) => equipment.attributes);
+    })
+    .catch((err) => {
+      toastify(err.message, 'error');
+    });
+
+  const {
+    isLoading,
+  } = useQuery('reservations_list', fetchReservations, {
+    enabled: true,
+    retry: 2,
+    onSuccess: (res) => {
+      dispatch(initEquipment(res));
     },
   });
 
@@ -33,7 +59,7 @@ const Reserve = () => {
     apiClient.post('/reservations', {
       equipment_id: data.equipment_id.value,
       city: data.city.value,
-      total: 20,
+      total: cost,
       reserved_date: data.reserved_date,
     }).then((res) => {
       toastify('Reservation created successfully', 'success');
@@ -54,8 +80,12 @@ const Reserve = () => {
     },
   };
 
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+
   return (
-    <section className={style.reserve_section}>
+    <section style={{ backgroundImage: `url(${bgImg})` }} className={style.reserve_section}>
       <div className={style.reserve_container}>
         <div className={style.search_container}>
           <FaSearch />
@@ -76,15 +106,24 @@ const Reserve = () => {
             rules={{ required: { value: true, message: 'Please input equipment' } }}
             render={({ field }) => (
               <Select
-                {...field}
+                onChange={(select) => {
+                  setbgImg(select.image.url);
+                  setCost(select.duration * select.rent_fee);
+                  setDuration(select.duration);
+                  setDatesReserved(select.dates_reserved);
+                  return field.onChange({ label: select.label, value: select.value });
+                }}
                 styles={customStyles}
                 className={style.city}
                 placeholder="Select Tech"
-                options={[
-                  { value: 1, label: 'Camera' },
-                  { value: 2, label: 'Drone' },
-                  { value: 3, label: 'Printer' },
-                ]}
+                options={equipments.map((item) => ({
+                  label: item.title,
+                  value: item.id,
+                  image: item.image,
+                  duration: item.duration,
+                  dates_reserved: item.dates_reserved,
+                  rent_fee: item.rent_fee,
+                }))}
               />
             )}
           />
@@ -114,10 +153,14 @@ const Reserve = () => {
                   selected={field.value}
                   closeOnScroll
                   placeholderText="Reservation Date"
-                  popperClassName={style.reserve_calender_popper}
                   calendarClassName={style.reserve_calender}
+                  minDate={new Date()}
                   className={style.reserve_date}
-                  excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+                  excludeDateIntervals={datesReserved.map((date) => {
+                    const utc = date.split('-');
+                    const current = new Date(Date.UTC(utc[0], utc[1] - 1, utc[2]));
+                    return { start: current, end: addDays(current, duration) };
+                  })}
                 />
               )}
             />
@@ -133,6 +176,20 @@ const Reserve = () => {
          && 'Please make sure you fill in all fields'}
           </span>
         </form>
+        <div className={style.expenses}>
+          <div className={style.cost}>
+            Duration (days) :
+            {' '}
+            {duration}
+          </div>
+          <div className={style.cost}>
+            Total Cost:
+            {' '}
+            {cost}
+            {' '}
+            $
+          </div>
+        </div>
       </div>
     </section>
   );

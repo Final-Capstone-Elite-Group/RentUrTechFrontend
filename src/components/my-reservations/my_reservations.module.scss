@@ -50,7 +50,7 @@
 			border-radius: 20px;
 			gap: 20px;
 			color: black;
-			background: radial-gradient($color-lightGray, $color-primary);
+			background: linear-gradient(to bottom right, $color-lightGray, $color-primary);
 
 			@include mq('md', max) {
 				flex: 0 0 160px;
