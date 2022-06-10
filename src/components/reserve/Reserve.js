@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
@@ -10,12 +10,15 @@ import { FaSearch } from 'react-icons/fa';
 import logo from '../../images/logo1.svg';
 import toastify from '../../logic/toastify';
 import apiClient from '../../logic/apiClient';
-import { initEquipment } from '../../redux/equipment/equipment';
+import { initEquipment, currentEquipment } from '../../redux/equipment/equipment';
 
 import style from './reserve.module.scss';
 
 const Reserve = () => {
-  const equipments = useSelector((state) => state.equipment.equipments);
+  const dispatch = useDispatch();
+
+  const { equipments, currentTech } = useSelector((state) => state.equipment);
+
   const citiesRef = useRef([
     'Toronto',
     'Montreal',
@@ -25,41 +28,24 @@ const Reserve = () => {
     'Alberta',
     'Manitoba',
   ]);
-  const [bgImg, setbgImg] = useState(logo);
-  const [duration, setDuration] = useState();
-  const [cost, setCost] = useState(0);
-  const [datesReserved, setDatesReserved] = useState([]);
-  const dispatch = useDispatch();
 
+  // Handling tech already selected when id given in params
+  // const { id } = useParams();
+  // useEffect(() => {
+  //   dispatch(currentEquipment(parseInt(id, 10)));
+  // }, [currentTech, id]);
+
+  // React form hook for getting values from all inputs and performing error analysis
   const {
     control, handleSubmit, formState: { errors },
   } = useForm();
 
-  const fetchReservations = async () => apiClient.get('/equipments')
-    .then((response) => (response.data))
-    .then((res) => {
-      toastify('Equipment updated successfully', 'success');
-      return res.data.map((equipment) => equipment.attributes);
-    })
-    .catch((err) => {
-      toastify(err.message, 'error');
-    });
-
-  const {
-    isLoading,
-  } = useQuery('reservations_list', fetchReservations, {
-    enabled: true,
-    retry: 2,
-    onSuccess: (res) => {
-      dispatch(initEquipment(res));
-    },
-  });
-
+  // Submit button to handle data by React form hook and send to Api.
   const onSubmit = async (data) => (
     apiClient.post('/reservations', {
       equipment_id: data.equipment_id.value,
       city: data.city.value,
-      total: cost,
+      total: currentTech.duration * currentTech.rent_fee,
       reserved_date: data.reserved_date,
     }).then((res) => {
       toastify('Reservation created successfully', 'success');
@@ -70,6 +56,29 @@ const Reserve = () => {
       })
   );
 
+  // Make do api call until homepgae is set up
+  const fetchEquipments = async () => apiClient.get('/equipments')
+    .then((response) => (response.data))
+    .then((res) => {
+      toastify('Equipment updated successfully', 'success');
+      return res.data.map((equipment) => equipment.attributes);
+    })
+    .catch((err) => {
+      toastify(err.message, 'error');
+    });
+
+  // React Query to make Api call when page loads
+  const {
+    isLoading,
+  } = useQuery('equipments_list', fetchEquipments, {
+    enabled: true,
+    retry: 2,
+    onSuccess: (res) => {
+      dispatch(initEquipment(res));
+    },
+  });
+
+  // Custom Styles for React select. (Have to do inline since depends on state of React-select )
   const customStyles = {
     option: (provided, { isSelected }) => {
       const backgroundColor = isSelected ? '#98bf0e' : '#646464';
@@ -80,12 +89,13 @@ const Reserve = () => {
     },
   };
 
+  // What to render when page is loading data using React query
   if (isLoading) {
     return <h1>Loading</h1>;
   }
 
   return (
-    <section style={{ backgroundImage: `url(${bgImg})` }} className={style.reserve_section}>
+    <section style={{ backgroundImage: `url(${currentTech?.image?.url ? currentTech.image.url : logo})` }} className={style.reserve_section}>
       <div className={style.reserve_container}>
         <div className={style.search_container}>
           <FaSearch />
@@ -99,7 +109,6 @@ const Reserve = () => {
           </p>
         </div>
         <form className={style.reserve_form} onSubmit={handleSubmit(onSubmit)}>
-          {/* %i[total reserved_date city equipment_id] */}
           <Controller
             name="equipment_id"
             control={control}
@@ -107,22 +116,16 @@ const Reserve = () => {
             render={({ field }) => (
               <Select
                 onChange={(select) => {
-                  setbgImg(select.image.url);
-                  setCost(select.duration * select.rent_fee);
-                  setDuration(select.duration);
-                  setDatesReserved(select.dates_reserved);
+                  dispatch(currentEquipment(select.value));
                   return field.onChange({ label: select.label, value: select.value });
                 }}
                 styles={customStyles}
                 className={style.city}
+                // disabled={id}
                 placeholder="Select Tech"
                 options={equipments.map((item) => ({
                   label: item.title,
                   value: item.id,
-                  image: item.image,
-                  duration: item.duration,
-                  dates_reserved: item.dates_reserved,
-                  rent_fee: item.rent_fee,
                 }))}
               />
             )}
@@ -156,10 +159,10 @@ const Reserve = () => {
                   calendarClassName={style.reserve_calender}
                   minDate={new Date()}
                   className={style.reserve_date}
-                  excludeDateIntervals={datesReserved.map((date) => {
+                  excludeDateIntervals={currentTech?.dates_reserved.map((date) => {
                     const utc = date.split('-');
                     const current = new Date(Date.UTC(utc[0], utc[1] - 1, utc[2]));
-                    return { start: current, end: addDays(current, duration) };
+                    return { start: current, end: addDays(current, currentTech.duration) };
                   })}
                 />
               )}
@@ -180,12 +183,12 @@ const Reserve = () => {
           <div className={style.cost}>
             Duration (days) :
             {' '}
-            {duration}
+            {currentTech?.duration || '0'}
           </div>
           <div className={style.cost}>
             Total Cost:
             {' '}
-            {cost}
+            {(currentTech?.duration * currentTech?.rent_fee) || '0'}
             {' '}
             $
           </div>
