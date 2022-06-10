@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import { NavLink } from 'react-router-dom';
 import { postUserToAPI } from '../../redux/user/user';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +28,6 @@ const Signup = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className={style.wrapper}>
         <form onSubmit={handleSubmit} className={style.form}>
           <div>

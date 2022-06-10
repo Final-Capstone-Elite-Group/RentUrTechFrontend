@@ -1,7 +1,9 @@
 import { PropTypes } from 'prop-types';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ redirectPath, isAllowed, element }) => {
+const ProtectedRoute = ({
+  redirectPath, isAllowed, element,
+}) => {
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }
