@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import style from '../../sass/shared/form.module.scss';
+import { useDispatch } from 'react-redux';
 import { loadState } from '../../logic/localStorage';
-import toastify from '../../logic/toastify';
+import { postEquipmentToAPI } from '../../redux/equipment/equipmentAPI';
+import style from '../../sass/shared/form.module.scss';
 
 const AddEquipment = () => {
+  const dispatch = useDispatch();
+
   const [equipment, setEquipment] = useState({
     image: '',
     title: '',
@@ -35,21 +37,7 @@ const AddEquipment = () => {
     formData.append('rent_fee', equipment.rent_fee);
     formData.append('total_amount_payable', equipment.total_amount_payable);
 
-    axios.post('http://localhost:3000/equipments', formData, config)
-      .then((res) => {
-        if (res.status === 201) {
-          toastify('Equipment Create successfully', 'success');
-          console.log(res.data);
-        }
-      })
-      .catch((e) => {
-        toastify(`ERROR ${e.response.data.errors}`, 'error');
-        console.log(e);
-      });
-
-    // for (const value of formData.values()) {
-    //   console.log(value);
-    // }
+    dispatch(postEquipmentToAPI(formData, config));
   };
 
   return (
