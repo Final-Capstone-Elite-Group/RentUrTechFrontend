@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toastify from '../../logic/toastify';
 import { initEquipment } from './equipment';
 
 const initState = () => async (dispatch) => {
@@ -6,4 +7,16 @@ const initState = () => async (dispatch) => {
   dispatch(initEquipment(response.data.data));
 };
 
-export default initState;
+const postEquipmentToAPI = () => async (dispatch, formData, config) => {
+  axios.post('http://localhost:3000/equipments', formData, config)
+    .then((res) => {
+      if (res.status === 201) {
+        toastify('Equipment Create successfully', 'success');
+      }
+    })
+    .catch((e) => {
+      toastify(`ERROR ${e.response.data.errors}`, 'error');
+    });
+};
+
+export { initState, postEquipmentToAPI };
