@@ -1,12 +1,10 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 import style from '../../sass/shared/form.module.scss';
+import { loadState } from '../../logic/localStorage';
 
 const AddEquipment = () => {
-  const user = useSelector((state) => state.auth);
-  console.log(user);
-
   const [equipment, setEquipment] = useState({
     image: '',
     title: '',
@@ -19,34 +17,37 @@ const AddEquipment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/equipments',
-      {
-        image: equipment.image,
-        title: equipment.title,
-        description: equipment.description,
-        review: equipment.review,
-        duration: equipment.duration,
-        rent_fee: equipment.rent_fee,
-        total_amount_payable: equipment.total_amount_payable,
-      })
+    const formData = new FormData();
+    const auth = loadState('auth');
+    const img = document.querySelector('input[type="file"]');
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${auth.token}`,
+      },
+    };
+
+    formData.append('image', img.files[0]);
+    formData.append('title', equipment.title);
+    formData.append('description', equipment.description);
+    formData.append('review', equipment.review);
+    formData.append('duration', equipment.duration);
+    formData.append('rent_fee', equipment.rent_fee);
+    formData.append('total_amount_payable', equipment.total_amount_payable);
+
+    axios.post('http://localhost:3000/equipments', formData, config)
       .then((res) => {
         if (res.status === 201) {
-          console.log(res);
+          console.log(res.data);
         }
       })
       .catch((e) => {
         console.log(e);
       });
 
-    setEquipment({
-      image: '',
-      title: '',
-      description: '',
-      review: '',
-      duration: 0,
-      rent_fee: 0.0,
-      total_amount_payable: 0.0,
-    });
+    for (const value of formData.values()) {
+      console.log(value);
+    }
   };
 
   return (
@@ -95,7 +96,7 @@ const AddEquipment = () => {
           </div>
           <div className={style['form-group']}>
             <label htmlFor="image">
-              <input type="file" id="image" value={equipment.image} onChange={(e) => setEquipment({ ...equipment, image: e.target.value })} className={style.file} />
+              <input type="file" id="image" className={style.file} />
             </label>
           </div>
           <input type="submit" value="Add equipment" className={style.submit} />
