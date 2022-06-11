@@ -7,7 +7,7 @@ const initState = () => async (dispatch) => {
   dispatch(initEquipment(response.data.data));
 };
 
-const postEquipmentToAPI = () => async (dispatch, formData, config) => {
+const postEquipmentToAPI = (formData, config) => async () => {
   axios.post('http://localhost:3000/equipments', formData, config)
     .then((res) => {
       if (res.status === 201) {
