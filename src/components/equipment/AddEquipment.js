@@ -1,8 +1,8 @@
-/* eslint-disable no-restricted-syntax */
 import React, { useState } from 'react';
 import axios from 'axios';
 import style from '../../sass/shared/form.module.scss';
 import { loadState } from '../../logic/localStorage';
+import toastify from '../../logic/toastify';
 
 const AddEquipment = () => {
   const [equipment, setEquipment] = useState({
@@ -38,16 +38,18 @@ const AddEquipment = () => {
     axios.post('http://localhost:3000/equipments', formData, config)
       .then((res) => {
         if (res.status === 201) {
+          toastify('Equipment Create successfully', 'success');
           console.log(res.data);
         }
       })
       .catch((e) => {
+        toastify(`ERROR ${e.response.data.errors}`, 'error');
         console.log(e);
       });
 
-    for (const value of formData.values()) {
-      console.log(value);
-    }
+    // for (const value of formData.values()) {
+    //   console.log(value);
+    // }
   };
 
   return (
