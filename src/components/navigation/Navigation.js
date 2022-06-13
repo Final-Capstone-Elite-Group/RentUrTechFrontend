@@ -19,7 +19,7 @@ const Navigation = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
-  const closedLocation = ['/', '/my-reservations', '/details'];
+  const closedLocation = ['/', '/my-reservations', '/details/:id'];
 
   useEffect(() => {
     if (closedLocation.includes(location.pathname)) {
@@ -66,7 +66,7 @@ const Navigation = () => {
             </li>
             <li>
               <NavLink to="/reserve" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
-                Reserve
+                Reservation
               </NavLink>
             </li>
             <li>

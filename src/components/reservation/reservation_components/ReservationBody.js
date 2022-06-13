@@ -1,14 +1,12 @@
 import { useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
-import logo from '../../images/logo1.svg';
+import { PropTypes } from 'prop-types';
+import logo from '../../../images/logo1.svg';
 import ReservationsForm from './ReservationForm';
-import { equipmentsQuery } from '../../logic/queries';
+import { equipmentsQuery } from '../../../logic/queries';
 import style from './reserve.module.scss';
 
-const Reserve = () => {
-  const { equipments, currentTech } = useSelector((state) => state.equipment);
-
+const ReservationBody = ({ currentTech, equipments, paramsBool }) => {
   const citiesRef = useRef([
     'Toronto',
     'Montreal',
@@ -46,7 +44,7 @@ const Reserve = () => {
           equipments={equipments}
           cities={citiesRef.current}
           currentTech={currentTech}
-          paramsBool={false}
+          paramsBool={paramsBool}
         />
         <div className={style.expenses}>
           <div className={style.cost}>
@@ -67,4 +65,42 @@ const Reserve = () => {
   );
 };
 
-export default Reserve;
+ReservationBody.defaultProps = {
+  currentTech: null,
+};
+
+ReservationBody.propTypes = {
+  equipments: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    review: PropTypes.string,
+    dates_reserved: PropTypes.arrayOf(PropTypes.string),
+    duration: PropTypes.number,
+    rent_fee: PropTypes.string,
+    total_amount_payable: PropTypes.string,
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
+    image: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  })).isRequired,
+  currentTech: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    review: PropTypes.string,
+    dates_reserved: PropTypes.arrayOf(PropTypes.string),
+    duration: PropTypes.number,
+    rent_fee: PropTypes.string,
+    total_amount_payable: PropTypes.string,
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
+    image: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  }),
+  paramsBool: PropTypes.bool.isRequired,
+};
+
+export default ReservationBody;

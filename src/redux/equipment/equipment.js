@@ -14,14 +14,9 @@ export const equipmentSlice = createSlice({
         (equipment) => equipment.id === action.payload,
       )[0];
     },
-    updateEquipmentDates(state, action) {
-      state.equipments.filter(
-        (equipment) => equipment.id === action.payload.id,
-      )[0].dates_reserved.push(action.payload.dates_reserved);
-    },
   },
 });
 
-export const { initEquipment, currentEquipment, updateEquipmentDates } = equipmentSlice.actions;
+export const { initEquipment, currentEquipment } = equipmentSlice.actions;
 
 export default equipmentSlice.reducer;

@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Navigation from './components/navigation/Navigation';
 import Signup from './components/signup/Signup';
-import Reserve from './components/reserve/Reserve';
-import ReserveParams from './components/reserve/ReserveParams';
+import Reservation from './components/reservation/Reservation';
+import ReservationParams from './components/reservation/ReservationParams';
 import MyReservations from './components/my-reservations/MyReservations';
 import Tech from './components/tech/Tech';
 import Login from './components/login/Login';
@@ -37,8 +37,8 @@ const App = () => {
         <Route path="/signup" element={<ProtectedRoute element={<Signup />} isAllowed={!auth?.token} redirectPath="/" message="Already Logged In, please Log Out to coninue" />} />
         <Route path="/details/:id" element={<h1>details</h1>} />
         <Route path="/my-reservations" element={<ProtectedRoute element={<MyReservations />} isAllowed={!!auth?.token} />} />
-        <Route path="/reserve" element={<ProtectedRoute element={<Reserve />} isAllowed={!!auth?.token} />} />
-        <Route path="/reserve/:id" element={<ProtectedRoute element={<ReserveParams />} isAllowed={!!auth?.token} />} />
+        <Route path="/reserve" element={<ProtectedRoute element={<Reservation />} isAllowed={!!auth?.token} />} />
+        <Route path="/reserve/:id" element={<ProtectedRoute element={<ReservationParams />} isAllowed={!!auth?.token} />} />
         <Route path="/add-equipment" element={<ProtectedRoute element={<h1>add</h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="/remove-equipment" element={<ProtectedRoute element={<h1>delete</h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="*" element={<p>There nothing here: 404!</p>} />

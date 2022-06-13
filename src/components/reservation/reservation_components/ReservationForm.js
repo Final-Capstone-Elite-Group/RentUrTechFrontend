@@ -2,11 +2,12 @@
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import { addDays } from 'date-fns';
 import { useForm, Controller } from 'react-hook-form';
-import { createReservation } from '../../logic/apiRequests';
-import { currentEquipment } from '../../redux/equipment/equipment';
+import { createReservation } from '../../../logic/apiRequests';
+import { currentEquipment } from '../../../redux/equipment/equipment';
 import style from './reservation_form.module.scss';
 
 const ReservationsForm = ({
@@ -19,9 +20,15 @@ const ReservationsForm = ({
     control, handleSubmit, formState: { errors },
   } = useForm();
 
-  // Submit button to handle data by React form hook and send to Api.
-  const onSubmit = async (data) => dispatch(createReservation(data, currentTech));
+  const navigate = useNavigate();
 
+  // Submit button to handle data by React form hook and send to Api.
+  const onSubmit = async (data) => {
+    const status = await createReservation(data, currentTech);
+    if (status) {
+      navigate('/my-reservations', { replace: true });
+    }
+  };
   // Custom Styles for React select. (Have to do inline since depends on state of React-select )
   const customStyles = {
     option: (provided, { isSelected }) => {
