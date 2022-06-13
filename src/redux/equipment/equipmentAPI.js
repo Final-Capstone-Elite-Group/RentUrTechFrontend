@@ -20,10 +20,11 @@ const postEquipmentToAPI = (formData, config) => async () => {
     });
 };
 
-const destroyEquipmentFromAPI = (id) => async () => {
-  apiClient.delete(`/equipments/${id}`).then((res) => (
-    res.data
-  )).catch((e) => {
+const destroyEquipmentFromAPI = async (id, callback) => {
+  apiClient.delete(`/equipments/${id}`).then((res) => {
+    toastify(res.data.message, 'success');
+    callback();
+  }).catch((e) => {
     toastify(e.error, 'error');
   });
 };
