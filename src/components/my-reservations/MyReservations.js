@@ -1,48 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { useQuery } from 'react-query';
-import { getReservations } from '../../redux/reservation/reservation';
-import apiClient from '../../logic/apiClient';
-import toastify from '../../logic/toastify';
+import { reservationsQuery } from '../../logic/queries';
+import { deleteReservation } from '../../logic/apiRequests';
 import style from './my_reservations.module.scss';
 
 const MyReservations = () => {
   const reservations = useSelector((state) => state.reservation);
-  const dispatch = useDispatch();
-
-  const fetchReservations = async () => apiClient.get('/reservations')
-    .then((response) => (response.data))
-    .then((res) => {
-      toastify('Reservations updated successfully', 'success');
-      return res.data.map((reserve) => reserve.attributes);
-    })
-    .catch((err) => {
-      console.log(err);
-      toastify(err.message, 'error');
-    });
 
   const {
     isLoading,
     refetch,
-  } = useQuery('reservations_list', fetchReservations, {
-    enabled: true,
-    retry: 2,
-    onSuccess: (res) => {
-      dispatch(getReservations(res));
-    },
-  });
-
-  const deleteReservation = async (id) => (
-    apiClient.delete(`/reservations/${id}`).then((res) => {
-      refetch();
-      return res.data;
-    })
-      .catch((err) => {
-        toastify(err.response.data.errors, 'error');
-      })
-  );
+  } = reservationsQuery();
 
   if (isLoading) {
     return <h1>Loadingcvdvfdsssssssssssssssssdgdfg</h1>;
@@ -89,7 +59,7 @@ const MyReservations = () => {
               className={style.trash}
               onClick={(e) => {
                 e.preventDefault();
-                deleteReservation(reserve.id);
+                deleteReservation(reserve.id, refetch);
               }}
             />
           </div>

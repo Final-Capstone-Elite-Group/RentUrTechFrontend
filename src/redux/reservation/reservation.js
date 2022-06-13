@@ -16,18 +16,14 @@ export const makeReservation = (payload) => ({
   payload,
 });
 
-// Axios Instance
-// const user = useSelector((state) => state.userReducer);
-
-// thunk action functions
-// export const getReservationsFromAPI = () => async (dispatch) => {
-// };
-
 // reducer
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_RESERVATIONS: {
       return [...action.payload];
+    }
+    case MAKE_RESERVATION: {
+      return [action.payload, ...state];
     }
     default:
       return state;
