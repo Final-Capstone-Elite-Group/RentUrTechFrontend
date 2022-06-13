@@ -65,7 +65,7 @@ const Navigation = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reserve" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
+              <NavLink to="/reservation" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
                 Reservation
               </NavLink>
             </li>
