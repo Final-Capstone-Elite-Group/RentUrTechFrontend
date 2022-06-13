@@ -10,6 +10,7 @@ import Signup from './components/signup/Signup';
 import Reserve from './components/reserve/Reserve';
 import MyReservations from './components/my-reservations/MyReservations';
 import Login from './components/login/Login';
+import DeleteEquipment from './components/equipment/DeleteEquipment';
 import './App.scss';
 
 const App = () => {
@@ -38,7 +39,7 @@ const App = () => {
         <Route path="/reserve" element={<ProtectedRoute element={<Reserve />} isAllowed={!!auth?.token} />} />
         <Route path="/reserve/:id" element={<ProtectedRoute element={<Reserve />} isAllowed={!!auth?.token} />} />
         <Route path="/add-equipment" element={<ProtectedRoute element={<h1>add</h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
-        <Route path="/remove-equipment" element={<ProtectedRoute element={<h1>delete</h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
+        <Route path="/remove-equipment" element={<ProtectedRoute element={<DeleteEquipment />} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="*" element={<p>There nothing here: 404!</p>} />
       </Routes>
     </div>
