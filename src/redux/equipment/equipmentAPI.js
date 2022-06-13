@@ -1,4 +1,5 @@
 import axios from 'axios';
+import apiClient from '../../logic/apiClient';
 import toastify from '../../logic/toastify';
 import { initEquipment } from './equipment';
 
@@ -19,4 +20,11 @@ const postEquipmentToAPI = (formData, config) => async () => {
     });
 };
 
-export { initState, postEquipmentToAPI };
+const destroyEquipmentFromAPI = (id) => async () => {
+  apiClient.delete(`/equipments/${id}`).then((res) => (
+    res.data
+  )).catch((e) => {
+    toastify(e.error, 'error');
+  });
+};
+export { initState, postEquipmentToAPI, destroyEquipmentFromAPI };
