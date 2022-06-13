@@ -1,0 +1,25 @@
+@use '../../sass/global.scss' as *;
+
+.tech_section {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  min-height: 100vh;
+
+  .tech_desc {
+    h1 {
+      font-weight: 800px;
+      font-size: 2rem;
+      letter-spacing: 5px;
+    }
+    p {
+      color: $color-lightGray;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+}
