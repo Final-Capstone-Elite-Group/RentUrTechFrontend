@@ -51,9 +51,9 @@ const Card = ({
         </p>
       </Link>
       <ul className={iconContainer}>
-        <li className={iconWrapper}><a aria-label="link-to-social" href={links.fa}><BsFacebook /></a></li>
-        <li className={iconWrapper}><a aria-label="link-to-social" href={links.tt}><AiFillTwitterCircle /></a></li>
-        <li className={iconWrapper}><a aria-label="link-to-social" href={links.yt}><BsYoutube /></a></li>
+        <li className={iconWrapper}><a aria-label="link-to-social" href={links.fa} target="_blank" rel="noreferrer"><BsFacebook /></a></li>
+        <li className={iconWrapper}><a aria-label="link-to-social" href={links.tt} target="_blank" rel="noreferrer"><AiFillTwitterCircle /></a></li>
+        <li className={iconWrapper}><a aria-label="link-to-social" href={links.yt} target="_blank" rel="noreferrer"><BsYoutube /></a></li>
       </ul>
     </div>
   );

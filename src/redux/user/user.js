@@ -40,7 +40,7 @@ export const authenticateUser = (user) => async (dispatch) => {
         saveState(user, 'auth');
       }
     }).catch((e) => {
-      toastify(e.response.data.errors, 'error');
+      toastify(e.response.data.error, 'error');
     });
 };
 

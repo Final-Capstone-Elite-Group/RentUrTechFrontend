@@ -1,7 +1,7 @@
 @use '../../sass/global.scss' as *;
 
 aside {
-  width: 200px;
+  width: 220px;
   background-color: white;
   position: fixed;
   left: 0;
@@ -35,8 +35,9 @@ aside {
       align-items: center;
       gap: 1rem;
       padding: 10px 40px 10px 20px;
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
 
       &::before {
         border-radius: 0 0 0 10px;
@@ -106,7 +107,7 @@ aside {
   cursor: pointer;
 
   img {
-    width: 120px;
+    width: 140px;
     border-radius: 10px;
   }
 }
@@ -199,7 +200,7 @@ aside {
       white-space: nowrap;
       background-color: $color-primary;
       border-radius: 5px;
-      font-size: 0.8rem;
+      font-size: 1rem;
       box-shadow: 0 5px 15px -5px $color-primary;
     }
   }

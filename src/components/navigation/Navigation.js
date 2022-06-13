@@ -10,7 +10,7 @@ import {
 import { BsTwitter } from 'react-icons/bs';
 import { logOut } from '../../redux/user/user';
 import { setMenu } from '../../redux/menu/menu';
-import logo from '../../images/logo1.svg';
+import logo from '../../images/main_logo.gif';
 import style from './navigation.module.scss';
 
 const Navigation = () => {

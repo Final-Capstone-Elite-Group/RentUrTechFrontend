@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { PropTypes } from 'prop-types';
-import logo from '../../../images/logo1.svg';
+import logo from '../../../images/form_logo.svg';
 import ReservationsForm from './ReservationForm';
 import { equipmentsQuery } from '../../../logic/queries';
 import style from './reserve.module.scss';

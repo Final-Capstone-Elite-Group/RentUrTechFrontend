@@ -56,15 +56,20 @@
       padding-bottom: 15px;
       text-transform: uppercase;
       letter-spacing: 6px;
+      font-size: 1.5rem;
+
+      @include mq('md', min) {
+        font-size: 2rem;
+      }
     }
 
     p {
       color: white;
-      font-size: 0.8rem;
+      font-size: 1rem;
       line-height: 2.2;
 
-      @include mq('md', max) {
-        font-size: 0.7rem;
+      @include mq('md', min) {
+        font-size: 1.1rem;
       }
     }
   }
@@ -77,7 +82,7 @@
   border-radius: 30px;
 
   .cost {
-    width: 130px;
+    width: 140px;
     border-radius: 10px;
     color: $color-darkGray;
     font-weight: 500;
@@ -86,10 +91,10 @@
     align-items: center;
     background: linear-gradient(to bottom right, $color-lightGray, $color-primary);
     padding: 15px 5px;
-    font-size: 0.8rem;
+    font-size: 1rem;
 
     @include mq('md', max) {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
     }
   }
 }
