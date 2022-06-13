@@ -11,8 +11,8 @@ import Reserve from './components/reserve/Reserve';
 import MyReservations from './components/my-reservations/MyReservations';
 import Login from './components/login/Login';
 import DeleteEquipment from './components/equipment/DeleteEquipment';
-import './App.scss';
 import AddEquipment from './components/equipment/AddEquipment';
+import './App.scss';
 
 const App = () => {
   const auth = useSelector((state) => state.auth);
