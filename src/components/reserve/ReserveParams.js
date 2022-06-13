@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
 import logo from '../../images/logo1.svg';
@@ -6,9 +7,10 @@ import ReservationsForm from './ReservationForm';
 import { equipmentsQuery } from '../../logic/queries';
 import style from './reserve.module.scss';
 
-const Reserve = () => {
-  const { equipments, currentTech } = useSelector((state) => state.equipment);
-
+const ReserveParams = () => {
+  const { id } = useParams();
+  const { equipments } = useSelector((state) => state.equipment);
+  const currentTech = equipments?.filter((tech) => tech.id.toString() === id)[0];
   const citiesRef = useRef([
     'Toronto',
     'Montreal',
@@ -46,7 +48,7 @@ const Reserve = () => {
           equipments={equipments}
           cities={citiesRef.current}
           currentTech={currentTech}
-          paramsBool={false}
+          paramsBool
         />
         <div className={style.expenses}>
           <div className={style.cost}>
@@ -67,4 +69,4 @@ const Reserve = () => {
   );
 };
 
-export default Reserve;
+export default ReserveParams;
