@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import style from './Carousel.module.scss';
@@ -11,6 +12,7 @@ import useWindowDimention from '../../custom-hooks/useWindowDimention';
 * @params {props}  collection - an array of equipments to be displayed
 */
 const Carousel = ({ collection }) => {
+  const menuState = useSelector((state) => (state.menu));
   const { container, cardContainer } = style;
   const [size, setSize] = useState(null);
   const [filteredList, setFilteredList] = useState([]);
@@ -24,9 +26,17 @@ const Carousel = ({ collection }) => {
     if (width <= 572) {
       newSize = 1;
     } else if (width <= 768) {
-      newSize = 2;
+      if (!menuState) {
+        newSize = 2;
+      } else {
+        newSize = 1;
+      }
     } else if (width <= 1400) {
-      newSize = 3;
+      if (!menuState) {
+        newSize = 3;
+      } else {
+        newSize = 2;
+      }
     } else {
       newSize = 4;
     }
@@ -44,7 +54,7 @@ const Carousel = ({ collection }) => {
     }
 
     return () => setSize(null);
-  }, [width, first, collection]);
+  }, [width, first, collection, menuState]);
 
   const touchStartHandler = (e) => {
     touchStart = e.targetTouches[0].clientY;
@@ -111,7 +121,7 @@ const Carousel = ({ collection }) => {
               description,
               review,
               image,
-            } = item.attributes;
+            } = item;
 
             return (
               <Card
@@ -145,23 +155,21 @@ const Carousel = ({ collection }) => {
 
 Carousel.propTypes = {
   collection: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    type: PropTypes.string,
-    attributes: PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      description: PropTypes.string,
-      review: PropTypes.string,
-      dates_reserved: PropTypes.arrayOf(PropTypes.string),
-      duration: PropTypes.number,
-      rent_fee: PropTypes.string,
-      total_amount_payable: PropTypes.string,
-      created_at: PropTypes.string,
-      updated_at: PropTypes.string,
-      image: PropTypes.shape({
-        url: PropTypes.string,
-      }),
+
+    id: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    review: PropTypes.string,
+    dates_reserved: PropTypes.arrayOf(PropTypes.string),
+    duration: PropTypes.number,
+    rent_fee: PropTypes.string,
+    total_amount_payable: PropTypes.string,
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
+    image: PropTypes.shape({
+      url: PropTypes.string,
     }),
+
   })).isRequired,
 };
 

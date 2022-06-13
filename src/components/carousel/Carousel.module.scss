@@ -1,4 +1,4 @@
-@use '../../sass/mixins/breakpoints' as *;
+@use '../../sass/global' as *;
 
 .container {
   width: 100%;
@@ -17,6 +17,10 @@
 
     @include mq(sm) {
       flex-direction: row;
+    }
+
+    @include mq(md) {
+      padding: 10px 60px;
     }
   }
 }
