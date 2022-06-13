@@ -1,0 +1,19 @@
+@use '../../sass/variables.scss' as *;
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-primary;
+  li {
+    list-style: none;
+  }
+}
+
+.card {
+  padding: 20px;
+  background-color: $color-white;
+}
