@@ -24,7 +24,7 @@ const Details = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(currentEquipment(parseInt(id)));
+    dispatch(currentEquipment(parseInt(id, 10)));
   }, []);
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -38,67 +38,75 @@ const Details = () => {
     // (causes 2500.99 to be printed as $2,501)
   });
 
-  return (
-    currentTech
-      ? (
-        <div className={detailsContainer}>
-          <Link to="/">
-            <Button style={{
-              display: 'flex', position: 'absolute', bottom: 0, left: 0,
-            }}
-            >
-              <BiLeftArrow />
-            </Button>
-          </Link>
-          <div className={imageContainer}>
-            <figure>
-              <img src={currentTech.image.url} alt={currentTech.title} />
-            </figure>
-            <span><GrCycle /></span>
-            <h6>
-              Rotate
-              <br />
-            </h6>
-          </div>
-          <div className={`${flex} ${details}`}>
-            <h2>{currentTech.title}</h2>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <h5>Rent fee</h5>
-                    {formatter.format(currentTech.rent_fee)}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Total amount payable</h5>
-                    {formatter.format(currentTech.total_amount_payable)}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Duration</h5>
-                    {formatter.format(currentTech.duration)}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <button className={discover} >
-              DISCOVER MORE MODELS
-              <span className={chevron}><FaChevronRight /></span>
-            </button>
-            <ColorPallete />
-            <Link to={`/reservation/${id}`}>
-              <BsGear />
-              {' '}
-              Reserve
-              {' '}
-              <BsArrowRightCircle />
-            </Link>
-          </div>
+  let render;
+  if (currentTech) {
+    render = (
+      <div className={detailsContainer}>
+        <Link to="/">
+          <Button style={{
+            display: 'flex', position: 'absolute', bottom: 0, left: 0,
+          }}
+          >
+            <BiLeftArrow />
+          </Button>
+        </Link>
+        <div className={imageContainer}>
+          <figure>
+            <img src={currentTech.image.url} alt={currentTech.title} />
+          </figure>
+          <span><GrCycle /></span>
+          <h6>
+            Rotate
+            <br />
+          </h6>
         </div>
-      ) : equipments.length > 0 ? 'loading' : <Navigate push to="/" />
+        <div className={`${flex} ${details}`}>
+          <h2>{currentTech.title}</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <h5>Rent fee</h5>
+                  {formatter.format(currentTech.rent_fee)}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h5>Total amount payable</h5>
+                  {formatter.format(currentTech.total_amount_payable)}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h5>Duration</h5>
+                  {formatter.format(currentTech.duration)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button className={discover} type='button'>
+            DISCOVER MORE MODELS
+            <span className={chevron}><FaChevronRight /></span>
+          </button>
+          <ColorPallete />
+          <Link to={`/reservation/${id}`}>
+            <BsGear />
+            {' '}
+            Reserve
+            {' '}
+            <BsArrowRightCircle />
+          </Link>
+        </div>
+      </div>
+    );
+  } else if (equipments.length > 0) {
+    render = 'loading';
+  } else {
+    render = <Navigate push to="/" />;
+  }
+
+  return (
+    render
   );
 };
 
