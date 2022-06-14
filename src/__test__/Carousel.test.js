@@ -1,6 +1,6 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from './test-utils';
 import { MemoryRouter } from 'react-router-dom';
-import Carousel from './Carousel';
+import Carousel from '../components/carousel/Carousel';
 
 describe('Carousel component', () => {
   let component;
@@ -93,7 +93,7 @@ describe('Carousel component', () => {
       },
     ];
     component = render(
-      <Carousel collection={collection} />, { wrapper: MemoryRouter },
+      <Carousel collection={collection} />
     );
   });
 
