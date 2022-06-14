@@ -24,7 +24,7 @@ const Details = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(currentEquipment(id.toString()));
+    dispatch(currentEquipment(parseInt(id)));
   }, []);
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -52,7 +52,7 @@ const Details = () => {
           </Link>
           <div className={imageContainer}>
             <figure>
-              <img src={currentTech.attributes.image.url} alt={currentTech.attributes.title} />
+              <img src={currentTech.image.url} alt={currentTech.title} />
             </figure>
             <span><GrCycle /></span>
             <h6>
@@ -61,25 +61,25 @@ const Details = () => {
             </h6>
           </div>
           <div className={`${flex} ${details}`}>
-            <h2>{currentTech.attributes.title}</h2>
+            <h2>{currentTech.title}</h2>
             <table>
               <tbody>
                 <tr>
                   <td>
                     <h5>Rent fee</h5>
-                    {formatter.format(currentTech.attributes.rent_fee)}
+                    {formatter.format(currentTech.rent_fee)}
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <h5>Total amount payable</h5>
-                    {formatter.format(currentTech.attributes.total_amount_payable)}
+                    {formatter.format(currentTech.total_amount_payable)}
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <h5>Duration</h5>
-                    {formatter.format(currentTech.attributes.duration)}
+                    {formatter.format(currentTech.duration)}
                   </td>
                 </tr>
               </tbody>
@@ -89,13 +89,13 @@ const Details = () => {
               <span className={chevron}><FaChevronRight /></span>
             </Link>
             <ColorPallete />
-            <button type="button">
+            <Link to={`/reservation/${id}`}>
               <BsGear />
               {' '}
-              Configure
+              Reserve
               {' '}
               <BsArrowRightCircle />
-            </button>
+            </Link>
           </div>
         </div>
       ) : equipments.length > 0 ? 'loading' : <Navigate push to="/" />
