@@ -10,17 +10,12 @@ export const equipmentSlice = createSlice({
       state.equipments.push(...action.payload);
     },
     currentEquipment(state, action) {
-<<<<<<< HEAD
-      // eslint-disable-next-line prefer-destructuring
-      state.currentTech = state.equipments.filter(equipment => equipment.id === action.payload)[0];
-=======
       if (state.currentTech?.id === action.payload) {
         return;
       }
       state.currentTech = state.equipments.filter(
         (equipment) => equipment.id === action.payload,
       )[0];
->>>>>>> develop
     },
     updateReservedDate(state, action) {
       state.currentTech.dates_reserved.push(action.payload);

@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector, useDispatch } from 'react-redux';
-import initState from './redux/equipment/equipmentAPI';
+import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Navigation from './components/navigation/Navigation';
 import Signup from './components/signup/Signup';
@@ -13,6 +12,7 @@ import ReservationParams from './components/reservation/ReservationParams';
 import MyReservations from './components/my-reservations/MyReservations';
 import Tech from './components/tech/Tech';
 import Login from './components/login/Login';
+import Details from './components/details/Details';
 import AddEquipment from './components/equipment/AddEquipment';
 import DeleteEquipment from './components/equipment/DeleteEquipment';
 import LoadingCanvas from './components/loading/LoadingCanvas';

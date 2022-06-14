@@ -19,6 +19,7 @@
     width: 100%;
     padding: 2vw;
     gap: 0.75rem;
+
     @include mq(lg) {
       gap: 3rem;
     }
@@ -38,6 +39,7 @@
       display: flex;
       align-items: center;
       gap: 0.3rem;
+
       @include mq(md) {
         font-size: 0.9rem;
       }
@@ -61,7 +63,7 @@
           font-size: 1.15rem;
         }
       }
-       
+
       tr {
         &:nth-child(odd) {
           background-color: #eee;
