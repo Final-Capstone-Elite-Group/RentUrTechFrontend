@@ -95,6 +95,23 @@ const handlers = [
     ),
     ctx.status(200),
   )),
+  rest.post('http://localhost:3000/login', (req, res, ctx) => res(
+    ctx.json(
+      {
+        user: {
+          id: 25,
+          name: 'string',
+          username: 'unique string',
+          email: 'test@example.com',
+          role: 'user',
+          created_at: '2022-06-08T21:03:48.046Z',
+          updated_at: '2022-06-08T21:03:48.046Z',
+        },
+        token: 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNSwiZXhwIjoxNjU0ODA4NjI4fQ.bitF0MxY5-B4SLPcpIpUhqQhdSq3XzXJ9YIhEVbO00o',
+      },
+    ),
+    ctx.status(200),
+  )),
 ];
 
 export default handlers;
