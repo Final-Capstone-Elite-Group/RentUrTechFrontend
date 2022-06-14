@@ -86,7 +86,7 @@ const AddEquipment = () => {
             <input type="number" id="rent_fee" name="rent_fee" value={equipment.rent_fee} onChange={(e) => setEquipment({ ...equipment, rent_fee: e.target.value })} placeholder="Decimal value" required />
           </div>
           <div className={style['form-group']}>
-            <span htmlFor="total_amount">
+            <span data-testid="total-amount" htmlFor="total_amount">
               Total Amount
             </span>
             <input type="number" id="total_amount" name="total_amount" value={equipment.total_amount_payable} onChange={(e) => setEquipment({ ...equipment, total_amount_payable: e.target.value })} placeholder="Decimal value" required />
