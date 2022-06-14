@@ -1,6 +1,7 @@
 // constants
 const GET_RESERVATIONS = '/reservation/GET_RESERVATIONS';
 const MAKE_RESERVATION = '/reservation/MAKE_RESERVATION';
+const REMOVE_RESERVATION = '/reservation/REMOVE_RESERVATION';
 
 // initial state
 const initialState = [];
@@ -16,6 +17,11 @@ export const makeReservation = (payload) => ({
   payload,
 });
 
+export const removeReservation = (payload) => ({
+  type: REMOVE_RESERVATION,
+  payload,
+});
+
 // reducer
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,6 +30,10 @@ const reducer = (state = initialState, action) => {
     }
     case MAKE_RESERVATION: {
       return [action.payload, ...state];
+    }
+    case REMOVE_RESERVATION: {
+      const newState = state.filter((reservations) => reservations.id !== action.payload);
+      return [...newState];
     }
     default:
       return state;

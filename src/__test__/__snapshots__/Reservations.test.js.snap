@@ -9,6 +9,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
       class="hamburger"
     >
       <svg
+        data-testid="hamburger"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -50,7 +51,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
       >
         <img
           alt="logo"
-          src="logo1.svg"
+          src="main_logo.gif"
         />
       </div>
       <nav>
@@ -69,7 +70,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
           <li>
             <a
               class="inactive"
-              href="/reserve"
+              href="/reservation"
             >
               Reservation
             </a>
@@ -358,6 +359,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                 >
                   <a
                     aria-label="link-to-social"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -380,6 +383,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="#"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -402,6 +407,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="https://www.youtube.com/watch?v=9Xk39LNg304"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -464,6 +471,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                 >
                   <a
                     aria-label="link-to-social"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -486,6 +495,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="#"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -508,6 +519,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="https://www.youtube.com/watch?v=Yaj1Mhj8mo4"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
