@@ -16,7 +16,7 @@ const ColorPallete = () => {
     const phase = 0;
     const center = 128;
     const width = 127;
-    const frequency = Math.PI * 2 / maxitem;
+    const frequency = (Math.PI * 2) / maxitem;
 
     const red = Math.sin(frequency * item + 2 + phase) * width + center;
     const green = Math.sin(frequency * item + 0 + phase) * width + center;
@@ -41,7 +41,7 @@ const ColorPallete = () => {
 
       ctx.font = 'bold 12px Helvetica, Arial';
 
-      for (let i = 0; i < 18; i++) {
+      for (let i = 0; i < 18; i += 1) {
         const angle = 0 + i * arc;
         // ctx.fillStyle = colors[i];
         ctx.fillStyle = getColor(i, 18);
