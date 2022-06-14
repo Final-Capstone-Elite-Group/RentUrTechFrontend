@@ -7,6 +7,7 @@ import ColorPallete from '../color-pallete/ColorPallete'
 import { BiLeftArrow } from 'react-icons/bi';
 import { GrCycle } from 'react-icons/gr';
 import { FaChevronRight } from 'react-icons/fa';
+import { BsGear, BsArrowRightCircle } from 'react-icons/bs';
 import styles from './Details.module.scss';
 
 const Details = () => {
@@ -46,7 +47,7 @@ const Details = () => {
           <img src={currentTech.attributes.image.url} alt={currentTech.attributes.title} />
         </figure>
         <span><GrCycle /></span>
-        <h6>Rotate<br />vehicle</h6>
+        <h6>Rotate<br /></h6>
       </div>
       <div className={`${flex} ${details}`}>
         <h2>{currentTech.attributes.title}</h2>
@@ -68,6 +69,7 @@ const Details = () => {
         </table> 
         <Link className={discover} to="#">DISCOVER MORE MODELS <span className={chevron}><FaChevronRight /></span></Link>
         <ColorPallete />
+        <button type='button'><BsGear /> Configure <BsArrowRightCircle /></button>
       </div>
     </div> : equipments.length > 0 ? "loading" : <Navigate push to={'/'}/>
   );
