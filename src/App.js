@@ -41,7 +41,7 @@ const App = () => {
         <Route path="/my-reservations" element={<ProtectedRoute element={<MyReservations />} isAllowed={!!auth?.token} />} />
         <Route path="/reservation" element={<ProtectedRoute element={<Reservation />} isAllowed={!!auth?.token} />} />
         <Route path="/reservation/:id" element={<ProtectedRoute element={<ReservationParams />} isAllowed={!!auth?.token} />} />
-        <Route path="/add-equipment" element={<ProtectedRoute element={<h1><AddEquipment /></h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
+        <Route path="/add-equipment" element={<ProtectedRoute element={<AddEquipment />} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="/remove-equipment" element={<ProtectedRoute element={<h1>delete</h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="*" element={<p>There nothing here: 404!</p>} />
       </Routes>
