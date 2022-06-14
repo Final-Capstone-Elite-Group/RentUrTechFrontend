@@ -31,6 +31,7 @@ function render(
         equipment: equipmentReducer,
         menu: menuReducer,
       },
+      preloadedState,
     }),
     ...renderOptions
   } = {},
