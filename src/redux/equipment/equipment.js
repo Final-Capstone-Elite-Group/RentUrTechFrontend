@@ -10,8 +10,7 @@ export const equipmentSlice = createSlice({
     },
     currentEquipment(state, action) {
       // eslint-disable-next-line prefer-destructuring
-      console.log(state)
-      state.currentTech = state.equipments
+      state.currentTech = state.equipments.filter(equipment => equipment.id === action.payload)[0];
     },
   },
 });
