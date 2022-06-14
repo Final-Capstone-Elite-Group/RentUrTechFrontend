@@ -1,0 +1,179 @@
+@use '../../sass/global.scss' as *;
+
+.reserve_form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .error_message {
+    color: red;
+    height: 20px;
+    flex-basis: 100%;
+    font-size: 0.5rem;
+  }
+}
+
+.city {
+  [class$='-control'] {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-primary;
+    border: 1px solid white;
+    padding: 2px 5px;
+    width: 150px;
+
+    &:focus-within,
+    &:hover {
+      border: 1px solid $color-darkGray;
+      background-color: $color-darkGray;
+    }
+
+    border-radius: 50px;
+
+    [class$='-ValueContainer'] {
+      [class$='-singleValue'] {
+        color: white;
+        font-size: 0.8rem;
+        width: 80px;
+
+        @include mq('md', max) {
+          font-size: 0.6rem;
+        }
+      }
+
+      [class$='-Input'] {
+        color: white;
+        width: 80px;
+        font-size: 0.8rem;
+
+        @include mq('md', max) {
+          font-size: 0.6rem;
+        }
+      }
+
+      [class$='-placeholder'] {
+        color: white;
+        font-size: 0.8rem;
+
+        @include mq('md', max) {
+          font-size: 0.6rem;
+        }
+      }
+    }
+
+    [class$='-IndicatorsContainer'] {
+      [class$='-indicatorSeparator'] {
+        display: none;
+      }
+
+      [class$='-indicatorContainer'] {
+        svg {
+          fill: white;
+        }
+      }
+    }
+  }
+
+  [class$='-menu'] {
+    border-radius: 10px 0 0 10px;
+    background-color: $color-darkGray;
+
+    [class$='-MenuList'] {
+      border-radius: 10px 0 0 10px;
+      max-height: 100px;
+
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: $color-darkGray;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: white;
+      }
+
+      [class$='-option'] {
+        font-size: 0.8rem;
+        color: white;
+        cursor: pointer;
+
+        @include mq('md', max) {
+          font-size: 0.6rem;
+        }
+
+        &:hover,
+        &:active {
+          color: $color-darkGray;
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+.reservation_submit {
+  padding: 11px 10px;
+  border-radius: 50px;
+  color: $color-primary;
+  cursor: pointer;
+  font-weight: 600;
+  width: 150px;
+  border: none;
+  transition: all 0.2s ease-in;
+
+  @include mq('md', max) {
+    font-size: 0.6rem;
+  }
+
+  &:hover {
+    background-color: $color-darkGray;
+    color: white;
+  }
+}
+
+.reserve_date {
+  padding: 13px 0 13px 25px;
+  cursor: pointer;
+  color: white;
+  width: 150px;
+  border-radius: 50px;
+  border: 1px solid white;
+  background-color: $color-primary;
+
+  @include mq('md', max) {
+    font-size: 0.6rem;
+    width: 145px;
+    height: 40px;
+  }
+
+  &::placeholder {
+    color: white;
+    font-size: 0.8rem;
+
+    @include mq('md', max) {
+      font-size: 0.6rem;
+    }
+  }
+
+  &:focus-within,
+  &:hover {
+    border: 1px solid $color-darkGray;
+    background-color: $color-darkGray;
+  }
+}
+
+.reserve_calender {
+  background-color: $color-primary;
+  color: aliceblue;
+  margin: 0;
+}
+
+.none {
+  display: none;
+}

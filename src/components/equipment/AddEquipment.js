@@ -8,7 +8,6 @@ const AddEquipment = () => {
   const dispatch = useDispatch();
 
   const [equipment, setEquipment] = useState({
-    image: '',
     title: '',
     description: '',
     review: '',
@@ -38,6 +37,14 @@ const AddEquipment = () => {
     formData.append('total_amount_payable', equipment.total_amount_payable);
 
     dispatch(postEquipmentToAPI(formData, config));
+    setEquipment({
+      title: '',
+      description: '',
+      review: '',
+      duration: 0,
+      rent_fee: 0.0,
+      total_amount_payable: 0.0,
+    });
   };
 
   return (
