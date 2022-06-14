@@ -7,6 +7,7 @@
   width: 100%;
   min-height: 100vh;
   padding-inline: 2vw;
+  padding-bottom: 2rem;
 
   @include mq(md) {
     flex-direction: row;
