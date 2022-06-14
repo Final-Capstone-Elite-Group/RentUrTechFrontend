@@ -84,10 +84,10 @@ const Details = () => {
                 </tr>
               </tbody>
             </table>
-            <Link className={discover} to="#">
+            <button className={discover} >
               DISCOVER MORE MODELS
               <span className={chevron}><FaChevronRight /></span>
-            </Link>
+            </button>
             <ColorPallete />
             <Link to={`/reservation/${id}`}>
               <BsGear />

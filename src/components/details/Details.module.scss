@@ -39,9 +39,13 @@
       display: flex;
       align-items: center;
       gap: 0.3rem;
+      background-color: #fff;
+      border: 0;
+      cursor: pointer;
+      font-size: 0.8rem;
 
       @include mq(md) {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
 
       .chevron {
@@ -71,7 +75,7 @@
       }
     }
 
-    button {
+    a {
       display: flex;
       align-items: center;
       gap: 1rem;
