@@ -1,5 +1,4 @@
 import { render, fireEvent } from './test-utils';
-import { MemoryRouter } from 'react-router-dom';
 import Carousel from '../components/carousel/Carousel';
 
 describe('Carousel component', () => {
