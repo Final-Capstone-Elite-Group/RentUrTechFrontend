@@ -1,4 +1,4 @@
-@import '../variables';
+@import '.././variables';
 
 @mixin mq($width, $type: min) {
   @if map_has_key($grid-breakpoints, $width) {

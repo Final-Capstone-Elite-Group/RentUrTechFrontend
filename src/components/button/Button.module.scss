@@ -1,5 +1,4 @@
-@use '../../sass/variables' as *;
-@use '../../sass/mixins/breakpoints' as *;
+@use '../../sass/global' as *;
 
 .button {
   display: none;
@@ -30,7 +29,7 @@
   }
 
   &[disabled] {
-    background-color: $color-darkGray;
+    background-color: $color-lightGray;
 
     &:hover {
       width: 60px;
