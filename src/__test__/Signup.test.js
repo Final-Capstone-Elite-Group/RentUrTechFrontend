@@ -20,11 +20,11 @@ test('Should match Login component snapshoot', async () => {
 });
 
 test('Should have a title Signup', () => {
-  const loginTitle = screen.getByTestId('signup-title');
-  expect(loginTitle).toBeInTheDocument();
+  const signupTitle = screen.getByTestId('signup-title');
+  expect(signupTitle).toBeInTheDocument();
 });
 
 test('Should have a email label', () => {
-  const username = screen.getByTestId('email');
-  expect(username).toBeInTheDocument();
+  const email = screen.getByTestId('email');
+  expect(email).toBeInTheDocument();
 });
