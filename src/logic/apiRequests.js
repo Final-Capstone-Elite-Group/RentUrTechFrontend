@@ -34,10 +34,10 @@ export const deleteReservation = (id, equipmentId, date) => async (dispatch) => 
 
 // Create a Reservation giving the form data and the current equipment
 export const createReservation = (data, currentTech) => async (dispatch) => (apiClient.post('/reservations', {
-  equipment_id: currentTech.id,
+  equipment_id: currentTech?.id,
   city: data.city.value,
-  total: currentTech.duration * currentTech.rent_fee,
-  reserved_date: data.reserved_date,
+  total: currentTech?.duration * currentTech?.rent_fee,
+  reserved_date: data?.reserved_date,
 }).then((res) => {
   dispatch(currentEquipment(currentTech.id));
   toastify('Reservation created successfully', 'success');
@@ -63,7 +63,7 @@ export const createReservation = (data, currentTech) => async (dispatch) => (api
   return res.data;
 })
   .catch((err) => {
-    toastify(err.response.data.errors, 'error');
+    toastify(err.response?.data?.errors, 'error');
     return false;
   })
 );
