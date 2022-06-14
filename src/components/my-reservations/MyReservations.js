@@ -56,6 +56,7 @@ const MyReservations = () => {
               </div>
             </div>
             <FaRegTrashAlt
+              data-testid="trashcan"
               className={style.trash}
               onClick={(e) => {
                 e.preventDefault();

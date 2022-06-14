@@ -35,15 +35,15 @@ const Login = () => {
             <span htmlFor="name">
               Username
             </span>
-            <input type="text" id="name" name="name" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} required />
+            <input type="text" id="name" data-testid="login-name" name="name" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} required />
           </div>
           <div className={style['form-group']}>
             <span htmlFor="username">
               password
             </span>
-            <input type="password" id="password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
+            <input type="password" id="password" data-testid="login-password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
           </div>
-          <input type="submit" value="Log in" className={style.submit} />
+          <input type="submit" value="Log in" data-testid="login-submit" className={style.submit} />
           <NavLink to="/signup">signup</NavLink>
         </form>
       </div>

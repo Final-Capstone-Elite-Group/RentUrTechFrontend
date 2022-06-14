@@ -49,6 +49,7 @@ const ReservationsForm = ({
         render={({ field }) => (
           <Select
             {...field}
+            data-testid="selectTech"
             onChange={(select) => {
               dispatch(currentEquipment(select.value));
               return field.onChange({ label: select.label, value: select.value });
@@ -56,7 +57,7 @@ const ReservationsForm = ({
             styles={customStyles}
             className={paramsBool ? style.none : style.city}
             placeholder="Select Tech"
-            options={equipments.map((item) => ({
+            options={equipments?.map((item) => ({
               label: item.title,
               value: item.id,
             }))}
@@ -71,6 +72,7 @@ const ReservationsForm = ({
         render={({ field }) => (
           <Select
             {...field}
+            data-testid="selectCity"
             styles={customStyles}
             className={style.city}
             placeholder="Select City"
@@ -86,6 +88,7 @@ const ReservationsForm = ({
           render={({ field }) => (
             <DatePicker
               onChange={(date) => field.onChange(date)}
+              data-testid="selectDate"
               selected={field.value}
               closeOnScroll
               placeholderText="Reservation Date"
@@ -103,6 +106,7 @@ const ReservationsForm = ({
       </div>
       <input
         type="submit"
+        data-testid="submitReservation"
         value="Book Now"
         className={style.reservation_submit}
       />

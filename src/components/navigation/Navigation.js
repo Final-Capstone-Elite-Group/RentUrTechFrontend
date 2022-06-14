@@ -44,7 +44,7 @@ const Navigation = () => {
   return (
     <>
       <div className={locationState ? style.hamburger : style.hamburger_white}>
-        <HiMenuAlt4 onClick={handleMenuOpen} />
+        <HiMenuAlt4 data-testid="hamburger" onClick={handleMenuOpen} />
       </div>
       <aside className={`${locationState && style.relative} ${!menuState && style.close_menu}`}>
         <button type="button" className={style.closing_button} onClick={handleMenuClose}>
