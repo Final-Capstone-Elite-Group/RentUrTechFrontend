@@ -11,7 +11,7 @@ export const equipmentsQuery = () => {
     useQuery('equipments_list', fetchEquipments, {
       enabled: true,
       retry: 2,
-      refetchOnMount: true,
+      refetchOnMount: false,
       onSuccess: (res) => {
         dispatch(initEquipment(res));
       },
@@ -27,6 +27,7 @@ export const reservationsQuery = () => {
     useQuery('reservations_list', fetchReservations, {
       enabled: true,
       retry: 2,
+      refetchOnMount: false,
       onSuccess: (res) => {
         dispatch(getReservations(res));
       },

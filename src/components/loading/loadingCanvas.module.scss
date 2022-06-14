@@ -1,0 +1,14 @@
+.canvas {
+  position: absolute;
+  inset: 0 0 0 0;
+  z-index: 50;
+  cursor: pointer;
+}
+
+.message {
+  position: absolute;
+  top: 43%;
+  left: 43%;
+  z-index: 51;
+  color: white;
+}

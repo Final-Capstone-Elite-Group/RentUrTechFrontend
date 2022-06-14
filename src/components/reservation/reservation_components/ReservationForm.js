@@ -24,7 +24,7 @@ const ReservationsForm = ({
 
   // Submit button to handle data by React form hook and send to Api.
   const onSubmit = async (data) => {
-    const status = await createReservation(data, currentTech);
+    const status = await dispatch(createReservation(data, currentTech));
     if (status) {
       navigate('/my-reservations', { replace: true });
     }

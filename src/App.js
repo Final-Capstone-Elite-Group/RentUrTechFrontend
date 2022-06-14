@@ -12,6 +12,7 @@ import ReservationParams from './components/reservation/ReservationParams';
 import MyReservations from './components/my-reservations/MyReservations';
 import Tech from './components/tech/Tech';
 import Login from './components/login/Login';
+import LoadingCanvas from './components/loading/LoadingCanvas';
 import './App.scss';
 import AddEquipment from './components/equipment/AddEquipment';
 
@@ -43,7 +44,7 @@ const App = () => {
         <Route path="/reservation/:id" element={<ProtectedRoute element={<ReservationParams />} isAllowed={!!auth?.token} />} />
         <Route path="/add-equipment" element={<ProtectedRoute element={<AddEquipment />} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="/remove-equipment" element={<ProtectedRoute element={<h1>delete</h1>} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
-        <Route path="*" element={<p>There nothing here: 404!</p>} />
+        <Route path="*" element={<LoadingCanvas />} />
       </Routes>
     </div>
   );
