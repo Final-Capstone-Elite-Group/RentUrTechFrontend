@@ -1,6 +1,7 @@
 // constants
 const GET_RESERVATIONS = '/reservation/GET_RESERVATIONS';
 const MAKE_RESERVATION = '/reservation/MAKE_RESERVATION';
+const REMOVE_RESERVATION = '/reservation/REMOVE_RESERVATION';
 
 // initial state
 const initialState = [];
@@ -16,18 +17,23 @@ export const makeReservation = (payload) => ({
   payload,
 });
 
-// Axios Instance
-// const user = useSelector((state) => state.userReducer);
-
-// thunk action functions
-// export const getReservationsFromAPI = () => async (dispatch) => {
-// };
+export const removeReservation = (payload) => ({
+  type: REMOVE_RESERVATION,
+  payload,
+});
 
 // reducer
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_RESERVATIONS: {
       return [...action.payload];
+    }
+    case MAKE_RESERVATION: {
+      return [action.payload, ...state];
+    }
+    case REMOVE_RESERVATION: {
+      const newState = state.filter((reservations) => reservations.id !== action.payload);
+      return [...newState];
     }
     default:
       return state;

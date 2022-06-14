@@ -29,7 +29,7 @@ const Signup = () => {
   return (
     <>
       <div className={style.wrapper}>
-        <form onSubmit={handleSubmit} className={style['user-form']}>
+        <form onSubmit={handleSubmit} className={style.form}>
           <div>
             <h1>Sign up</h1>
             <div className={style.logo} />

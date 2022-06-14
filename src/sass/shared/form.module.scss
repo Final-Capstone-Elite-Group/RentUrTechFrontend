@@ -1,7 +1,9 @@
 @use '../global.scss' as *;
 
-.user-form {
+.form {
   width: 350px;
+  max-height: 95vh;
+  overflow: auto;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -42,12 +44,41 @@
       color: $color-primary;
     }
   }
+
+  textarea {
+    flex-grow: 1;
+    font-size: 1rem;
+    border-radius: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 0.7rem;
+    outline: none;
+    border: none;
+    resize: none;
+
+    &::placeholder {
+      color: rgb(94, 93, 93);
+    }
+  }
+
+  .file {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 12px;
+    border-radius: 2rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.808);
+    font-size: 1rem;
+  }
 }
 
 .wrapper {
   height: 100vh;
   width: 100%;
+  overflow: hidden;
   display: flex;
+  padding: 20px 0;
   justify-content: center;
   align-items: center;
   background-image: url('../../images/background.jpg');
@@ -57,40 +88,45 @@
     color: rgba(0, 0, 0, 0.808);
     text-transform: uppercase;
     letter-spacing: 0.4rem;
+    font-size: 1.7rem;
   }
 }
 
 .form-group {
-  padding: 12px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
 
   span {
     color: rgba(0, 0, 0, 0.808);
+    font-size: 1.2rem;
     font-weight: 500;
   }
 
   input {
     flex-grow: 1;
+    font-size: 1rem;
     border-radius: 2rem;
+    color: rgba(0, 0, 0, 0.808);
     background-color: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    padding: 1rem;
+    padding: 0.8rem;
     outline: none;
     border: none;
 
-    &:focus {
-      border: 0.5px solid;
+    &::placeholder {
+      color: rgb(94, 93, 93);
     }
   }
 }
 
 .submit {
   background-color: rgba(255, 255, 255, 0.659);
+  text-align: center;
   color: rgba(0, 0, 0, 0.808);
   font-size: 0.8rem;
-  width: 100px;
+  width: fit-content;
   margin: 10px;
   border: none;
   border-radius: 2rem;

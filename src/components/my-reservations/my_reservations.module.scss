@@ -53,6 +53,13 @@
       color: black;
       background: linear-gradient(to bottom right, $color-lightGray, $color-primary);
 
+      &:hover {
+        background: $color-primary;
+        color: #fff;
+        transform: translateY(-5px);
+        z-index: 1000;
+      }
+
       @include mq('md', max) {
         flex: 0 0 160px;
         flex-direction: column;

@@ -1,4 +1,4 @@
-@use '../../sass/mixins/breakpoints' as *;
+@use '../../sass/global' as *;
 
 .card {
   padding: map-get($global-padding, sm);
@@ -8,6 +8,9 @@
   width: 100%;
   border-radius: 2vw;
   transition: 250ms ease;
+  text-align: center;
+  min-width: 176px;
+  min-height: 348px;
 
   @include mq(sm) {
     width: 50%;
@@ -59,6 +62,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 0.7rem;
+    margin-top: 25px;
 
     .separator {
       color: $color-lightGray;
@@ -70,7 +75,8 @@
     .cardContent {
       width: 75%;
       color: $color-darkGray;
-      font-size: 0.75rem;
+      font-size: 0.6rem;
+      line-height: 1.5;
       text-align: center;
       margin-bottom: 1rem;
       height: 46px;
@@ -111,7 +117,6 @@
     background-color: $color-primary;
     color: #fff;
     transform: translateY(-5px);
-    z-index: 1000;
 
     .linkToEquipment {
       color: #fff;
