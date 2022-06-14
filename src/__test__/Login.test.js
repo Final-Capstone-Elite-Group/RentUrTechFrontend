@@ -18,3 +18,13 @@ test('Should match Login component snapshoot', async () => {
   const container = await waitFor(() => screen.getByText('signup'));
   expect(container).toMatchSnapshot();
 });
+
+test('Should have a title Login', () => {
+  const loginTitle = screen.getByTestId('login-title');
+  expect(loginTitle).toBeInTheDocument();
+});
+
+test('Should have a username label', () => {
+  const username = screen.getByTestId('username');
+  expect(username).toBeInTheDocument();
+});
