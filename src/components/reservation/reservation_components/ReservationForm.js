@@ -2,11 +2,12 @@
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import { addDays } from 'date-fns';
 import { useForm, Controller } from 'react-hook-form';
-import { createReservation } from '../../logic/apiRequests';
-import { currentEquipment } from '../../redux/equipment/equipment';
+import { createReservation } from '../../../logic/apiRequests';
+import { currentEquipment } from '../../../redux/equipment/equipment';
 import style from './reservation_form.module.scss';
 
 const ReservationsForm = ({
@@ -19,9 +20,15 @@ const ReservationsForm = ({
     control, handleSubmit, formState: { errors },
   } = useForm();
 
-  // Submit button to handle data by React form hook and send to Api.
-  const onSubmit = async (data) => dispatch(createReservation(data, currentTech));
+  const navigate = useNavigate();
 
+  // Submit button to handle data by React form hook and send to Api.
+  const onSubmit = async (data) => {
+    const status = await dispatch(createReservation(data, currentTech));
+    if (status) {
+      navigate('/my-reservations', { replace: true });
+    }
+  };
   // Custom Styles for React select. (Have to do inline since depends on state of React-select )
   const customStyles = {
     option: (provided, { isSelected }) => {
@@ -42,6 +49,7 @@ const ReservationsForm = ({
         render={({ field }) => (
           <Select
             {...field}
+            data-testid="selectTech"
             onChange={(select) => {
               dispatch(currentEquipment(select.value));
               return field.onChange({ label: select.label, value: select.value });
@@ -49,7 +57,7 @@ const ReservationsForm = ({
             styles={customStyles}
             className={paramsBool ? style.none : style.city}
             placeholder="Select Tech"
-            options={equipments.map((item) => ({
+            options={equipments?.map((item) => ({
               label: item.title,
               value: item.id,
             }))}
@@ -64,6 +72,7 @@ const ReservationsForm = ({
         render={({ field }) => (
           <Select
             {...field}
+            data-testid="selectCity"
             styles={customStyles}
             className={style.city}
             placeholder="Select City"
@@ -79,6 +88,7 @@ const ReservationsForm = ({
           render={({ field }) => (
             <DatePicker
               onChange={(date) => field.onChange(date)}
+              data-testid="selectDate"
               selected={field.value}
               closeOnScroll
               placeholderText="Reservation Date"
@@ -96,6 +106,7 @@ const ReservationsForm = ({
       </div>
       <input
         type="submit"
+        data-testid="submitReservation"
         value="Book Now"
         className={style.reservation_submit}
       />

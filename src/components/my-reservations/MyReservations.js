@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { reservationsQuery } from '../../logic/queries';
 import { deleteReservation } from '../../logic/apiRequests';
@@ -8,10 +8,9 @@ import style from './my_reservations.module.scss';
 
 const MyReservations = () => {
   const reservations = useSelector((state) => state.reservation);
-
+  const dispatch = useDispatch();
   const {
     isLoading,
-    refetch,
   } = reservationsQuery();
 
   if (isLoading) {
@@ -56,10 +55,13 @@ const MyReservations = () => {
               </div>
             </div>
             <FaRegTrashAlt
+              data-testid="trashcan"
               className={style.trash}
               onClick={(e) => {
                 e.preventDefault();
-                deleteReservation(reserve.id, refetch);
+                dispatch(deleteReservation(
+                  reserve.id, reserve.equipment.id, reserve.reserved_date,
+                ));
               }}
             />
           </div>

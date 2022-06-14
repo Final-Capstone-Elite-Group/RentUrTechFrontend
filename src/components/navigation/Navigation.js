@@ -19,7 +19,7 @@ const Navigation = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
-  const closedLocation = ['/', '/my-reservations', '/details'];
+  const closedLocation = ['/', '/my-reservations', '/details/:id'];
 
   useEffect(() => {
     if (closedLocation.includes(location.pathname)) {
@@ -44,7 +44,7 @@ const Navigation = () => {
   return (
     <>
       <div className={locationState ? style.hamburger : style.hamburger_white}>
-        <HiMenuAlt4 onClick={handleMenuOpen} />
+        <HiMenuAlt4 data-testid="hamburger" onClick={handleMenuOpen} />
       </div>
       <aside className={`${locationState && style.relative} ${!menuState && style.close_menu}`}>
         <button type="button" className={style.closing_button} onClick={handleMenuClose}>
@@ -65,8 +65,8 @@ const Navigation = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reserve" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
-                Reserve
+              <NavLink to="/reservation" className={({ isActive }) => (isActive ? style.active : 'inactive')}>
+                Reservation
               </NavLink>
             </li>
             <li>
