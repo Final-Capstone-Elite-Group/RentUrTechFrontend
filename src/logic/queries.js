@@ -15,9 +15,6 @@ export const equipmentsQuery = () => {
       onSuccess: (res) => {
         dispatch(initEquipment(res));
       },
-      onSettled: () => {
-        toastify('Technologies fetched successfully', 'success');
-      },
     }));
 };
 
