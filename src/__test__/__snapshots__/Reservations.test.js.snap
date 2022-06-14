@@ -215,62 +215,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
     </aside>
     <div
       class="Toastify"
-    >
-      <div
-        class="Toastify__toast-container Toastify__toast-container--bottom-right"
-      >
-        <div
-          class="Toastify__toast Toastify__toast-theme--dark Toastify__toast--success Toastify--animate Toastify__bounce-enter--bottom-right"
-          id="1"
-          style="--nth: 1; --len: 1;"
-        >
-          <div
-            class="Toastify__toast-body"
-            role="alert"
-          >
-            <div
-              class="Toastify__toast-icon Toastify--animate-icon Toastify__zoom-enter"
-            >
-              <svg
-                fill="var(--toastify-icon-color-success)"
-                height="100%"
-                viewBox="0 0 24 24"
-                width="100%"
-              >
-                <path
-                  d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm6.927 8.2l-6.845 9.289a1.011 1.011 0 01-1.43.188l-4.888-3.908a1 1 0 111.25-1.562l4.076 3.261 6.227-8.451a1 1 0 111.61 1.183z"
-                />
-              </svg>
-            </div>
-            <div>
-              Technologies fetched successfully
-            </div>
-          </div>
-          <button
-            aria-label="close"
-            class="Toastify__close-button Toastify__close-button--dark"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 14 16"
-            >
-              <path
-                d="M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"
-                fill-rule="evenodd"
-              />
-            </svg>
-          </button>
-          <div
-            aria-hidden="false"
-            aria-label="notification timer"
-            class="Toastify__progress-bar Toastify__progress-bar--animated Toastify__progress-bar-theme--dark Toastify__progress-bar--success"
-            role="progressbar"
-            style="animation-duration: 1500ms; animation-play-state: paused; opacity: 1;"
-          />
-        </div>
-      </div>
-    </div>
+    />
     <section
       class="tech_section"
     >
