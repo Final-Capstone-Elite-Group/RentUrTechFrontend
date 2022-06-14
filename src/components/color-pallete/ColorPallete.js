@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const ColorPallete = () => {
+/* eslint no-bitwise: ["error", { "allow": ["&", ">>"] }] */
   const canvas = useRef(null);
   function byte2Hex(n) {
     const nybHexString = '0123456789ABCDEF';

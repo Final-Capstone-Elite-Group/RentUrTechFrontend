@@ -84,7 +84,7 @@ const Details = () => {
               </tr>
             </tbody>
           </table>
-          <button className={discover} type='button'>
+          <button className={discover} type="button">
             DISCOVER MORE MODELS
             <span className={chevron}><FaChevronRight /></span>
           </button>
