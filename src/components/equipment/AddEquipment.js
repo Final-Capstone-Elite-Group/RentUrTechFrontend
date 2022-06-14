@@ -52,7 +52,7 @@ const AddEquipment = () => {
       <div className={style.wrapper}>
         <form className={style.form} onSubmit={handleSubmit}>
           <div>
-            <h1>Equipments</h1>
+            <h1 data-testid="equipment-title">Equipments</h1>
             <div className={style.logo} />
           </div>
           <div className={style['form-group']}>
@@ -96,7 +96,7 @@ const AddEquipment = () => {
               <input type="file" id="image" className={style.file} />
             </label>
           </div>
-          <input type="submit" value="Add equipment" className={style.submit} />
+          <input data-testid="equipment-submit" type="submit" value="Add equipment" className={style.submit} />
         </form>
       </div>
     </>
