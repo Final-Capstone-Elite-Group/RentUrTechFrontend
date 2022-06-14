@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match Login component snapshoot 1`] = `
+<a
+  class=""
+  href="/signup"
+>
+  signup
+</a>
+`;
