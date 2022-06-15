@@ -55,6 +55,7 @@ const LoadingCanvas = () => {
 
   const animate = (context) => {
     window.requestAnimationFrame(animate);
+    if(!context) return;
     context.fillStyle = `rgba(255, 255, 255, ${alpha.current})`;
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.save();
