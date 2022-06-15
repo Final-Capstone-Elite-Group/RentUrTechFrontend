@@ -119,6 +119,16 @@ beforeEach(() => {
   };
 });
 
+jest.mock('../logic/apiRequests', () => {
+  const originalModule = jest.requireActual('../logic/apiRequests');
+  // Mock the default export and named export 'createReservation' 
+  return {
+    __esModule: true,
+    ...originalModule,
+    createReservation: jest.fn(() => true),
+  };
+}); 
+
 afterAll(() => server.close());
 
 it('App Renders Correctly and takes you to Tech page', async () => {
