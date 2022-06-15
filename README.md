@@ -12,13 +12,22 @@
 
 ## Desktop Preview
 
+![Desktop Preview](./desktop_preview.gif)
+
 ## Mobile Preview
+
+![Mobile Preview](./mobile_preview.gif)
+
+## Deployment
+
+You can find the app [live link here](https://renturtech.netlify.app/)
+
 ## Back-end Repository
-You can find the back-end API [in this Repo](https://github.com/Final-Capstone-Elite-Group/RentUrTecBackend). The back-end was made using Ruby on Rails.
+You can find the back-end API [in this Repo](https://github.com/Final-Capstone-Elite-Group/RentUrTechBackend). The back-end was made using Ruby on Rails.
 
 ## Built With
 
-- Languages: _**JavaScript, HTML & CSS**_
+- Languages: _**JavaScript, HTML & SCSS**_
 - Frameworks: _**React & Redux**_
 - Technologies used: _**Visual Studio Code**_
 
@@ -130,6 +139,13 @@ I would love to hear your thoughts and ideas 🖤
 ## Acknowledgments
 
 - Thank you to all our peers who helped us out through this wonderful journey at Microverse. 🌥️
+
+### Web Design
+
+The [template](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) style guidelines such as the layout distribution, color and selected fonts for the whole project were designed by [Murat Korkmaz](https://www.behance.net/muratk) on Behance.
+
+Check Murat's page for more amazing GUI and Graphic designs!
+
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
