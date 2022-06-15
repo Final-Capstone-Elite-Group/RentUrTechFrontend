@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { BiLeftArrow } from 'react-icons/bi';
 import { GrCycle } from 'react-icons/gr';
@@ -6,7 +6,6 @@ import { FaChevronRight } from 'react-icons/fa';
 import { BsGear, BsArrowRightCircle } from 'react-icons/bs';
 import ColorPallete from '../color-pallete/ColorPallete';
 import Button from '../button/Button';
-import { currentEquipment } from '../../redux/equipment/equipment';
 import styles from './Details.module.scss';
 
 const Details = () => {
@@ -18,10 +17,10 @@ const Details = () => {
     discover,
     chevron,
   } = styles;
-  const { currentTech } = useSelector((state) => state.equipment);
-  const dispatch = useDispatch();
   const { id } = useParams();
-  dispatch(currentEquipment(parseInt(id, 10)));
+  const { equipments } = useSelector((state) => state.equipment);
+  const currentTech = equipments?.filter((tech) => tech.id.toString() === id)[0];
+
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -93,7 +92,7 @@ const Details = () => {
       </div>
     );
   } else {
-    render = <Navigate push to="404" />;
+    render = <Navigate to="/404" />;
   }
   return (
     render
