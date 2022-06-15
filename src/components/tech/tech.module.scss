@@ -12,9 +12,13 @@
 
   .tech_desc {
     h1 {
-      font-weight: 700;
-      font-size: 2rem;
+      font-weight: 800;
+      font-size: 2.5rem;
       letter-spacing: 5px;
+
+      @include mq('sm', max) {
+        font-size: 2rem;
+      }
     }
 
     p {
@@ -22,5 +26,7 @@
       font-size: 0.8rem;
       font-weight: 500;
     }
+
+    @include fade-in();
   }
 }

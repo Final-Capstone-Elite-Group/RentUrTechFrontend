@@ -16,6 +16,8 @@
     flex-wrap: wrap;
     gap: 20px;
 
+    @include slide-in();
+
     h1 {
       flex: 1 1 100%;
       text-align: center;
@@ -37,7 +39,7 @@
       cursor: pointer;
 
       &:hover {
-        fill: $color-primary;
+        fill: $color-white;
       }
     }
 
@@ -55,13 +57,12 @@
 
       &:hover {
         background: $color-primary;
-        color: #fff;
         transform: translateY(-5px);
         z-index: 1000;
       }
 
       @include mq('md', max) {
-        flex: 0 0 160px;
+        flex: 0 0 240px;
         flex-direction: column;
         text-align: center;
         padding: 20px;
@@ -69,8 +70,8 @@
       }
 
       @include mq('sm', max) {
-        flex: 0 0 200px;
-        height: 240px;
+        flex: 0 0 80%;
+        height: 300px;
       }
 
       .img_container {
@@ -102,10 +103,10 @@
         gap: 5px;
 
         h2 {
-          font-size: 1.2rem;
+          font-size: 1.4rem;
 
           @include mq('md', max) {
-            font-size: 1rem;
+            font-size: 1.2rem;
           }
         }
 
@@ -119,12 +120,12 @@
           }
 
           h3 {
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: 400;
             font-family: 'Roboto', sans-serif;
 
             @include mq('md', max) {
-              font-size: 0.5rem;
+              font-size: 0.8rem;
             }
 
             span {

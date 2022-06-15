@@ -25,7 +25,7 @@ export const login = (payload) => ({
 });
 
 export const authenticateUser = (user) => async (dispatch) => {
-  await axios.post('http://localhost:3000/login', {
+  await axios.post('https://renturtech.herokuapp.com/login', {
     username: user.username,
     password: user.password,
   })
@@ -40,12 +40,12 @@ export const authenticateUser = (user) => async (dispatch) => {
         saveState(user, 'auth');
       }
     }).catch((e) => {
-      toastify(e.response.data.errors, 'error');
+      toastify(e.response.data.error, 'error');
     });
 };
 
 export const postUserToAPI = (user) => async (dispatch) => {
-  await axios.post('http://localhost:3000/signup',
+  await axios.post('https://renturtech.herokuapp.com/signup',
     {
       user,
     })

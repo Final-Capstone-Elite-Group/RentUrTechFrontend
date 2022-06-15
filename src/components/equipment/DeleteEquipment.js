@@ -7,7 +7,7 @@ import { destroyEquipmentFromAPI } from '../../redux/equipment/equipmentAPI';
 
 const DeleteEquipment = () => {
   const { equipments } = useSelector((state) => state.equipment);
-  const { isLoading, refetch } = equipmentsQuery();
+  const { refetch } = equipmentsQuery();
   const columns = [
     {
       name: 'id',
@@ -35,13 +35,25 @@ const DeleteEquipment = () => {
     },
   ];
 
-  if (isLoading) {
-    return <h1>Loading</h1>;
-  }
+  const customStyles = {
+    headCells: {
+      style: {
+        fontWeight: 600,
+        fontSize: '1rem',
+      },
+    },
+  };
 
   return (
     <div className={style.wrapper}>
-      <DataTable columns={columns} data={equipments} fixedHeader pagination />
+      <h1> Remove Equipment </h1>
+      <DataTable
+        customStyles={customStyles}
+        columns={columns}
+        data={equipments}
+        fixedHeader
+        pagination
+      />
     </div>
   );
 };

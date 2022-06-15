@@ -48,7 +48,7 @@ exports[`Navigation Renders Correctly 1`] = `
     >
       <img
         alt="logo"
-        src="logo1.svg"
+        src="main_logo.gif"
       />
     </div>
     <nav>

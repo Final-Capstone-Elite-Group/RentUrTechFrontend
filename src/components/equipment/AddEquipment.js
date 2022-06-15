@@ -3,9 +3,11 @@ import { useDispatch } from 'react-redux';
 import { loadState } from '../../logic/localStorage';
 import { postEquipmentToAPI } from '../../redux/equipment/equipmentAPI';
 import style from '../../sass/shared/form.module.scss';
+import { equipmentsQuery } from '../../logic/queries';
 
 const AddEquipment = () => {
   const dispatch = useDispatch();
+  const { refetch } = equipmentsQuery();
 
   const [equipment, setEquipment] = useState({
     title: '',
@@ -36,7 +38,7 @@ const AddEquipment = () => {
     formData.append('rent_fee', equipment.rent_fee);
     formData.append('total_amount_payable', equipment.total_amount_payable);
 
-    dispatch(postEquipmentToAPI(formData, config));
+    dispatch(postEquipmentToAPI(formData, config, refetch));
     setEquipment({
       title: '',
       description: '',
