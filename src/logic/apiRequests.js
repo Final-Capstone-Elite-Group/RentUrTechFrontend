@@ -25,7 +25,7 @@ export const deleteReservation = (id, equipmentId, date) => async (dispatch) => 
     return res.data;
   })
     .catch((err) => {
-      if (err.response?.status === 500) {
+      if (err.response?.status === 401) {
         toastify('Session expired please login again', 'info');
         dispatch(logOut());
       }
@@ -64,7 +64,7 @@ export const createReservation = (data, currentTech) => async (dispatch) => (api
   return res.data;
 })
   .catch((err) => {
-    if (err.response?.status === 500) {
+    if (err.response?.status === 401) {
       toastify('Session expired please login again', 'info');
       dispatch(logOut());
     }

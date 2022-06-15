@@ -18,7 +18,7 @@ const postEquipmentToAPI = (formData, config, callback) => async (dispatch) => {
       }
     })
     .catch((e) => {
-      if (e.response.status === 500) {
+      if (e.response.status === 401) {
         toastify('Session expired please login again', 'info');
         dispatch(logOut());
       }
@@ -31,7 +31,7 @@ const destroyEquipmentFromAPI = (id, callback) => async (dispatch) => {
     toastify(res.data.message, 'success');
     callback();
   }).catch((e) => {
-    if (e.response.status === 500) {
+    if (e.response.status === 401) {
       toastify('Session expired please login again', 'info');
       dispatch(logOut());
     }
