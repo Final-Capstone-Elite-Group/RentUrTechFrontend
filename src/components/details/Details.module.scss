@@ -132,12 +132,15 @@
       margin-bottom: 2rem;
 
       img {
-        height: 100%;
-        max-width: 300px;
-        margin-bottom: 30px;
+        height: 25vh;
+        object-fit: contain;
+        aspect-ratio: 1 / 1;
+
+        @include mq(md) {
+          height: 50vh;
+        }
 
         @include mq(lg) {
-          max-width: 600px;
           margin-bottom: 100px;
         }
       }
