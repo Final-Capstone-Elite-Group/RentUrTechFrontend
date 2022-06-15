@@ -53,7 +53,7 @@ const LoadingCanvas = () => {
     }
   };
 
-  const animate = (context) => {
+  const animate = () => {
     window.requestAnimationFrame(animate);
     if (!context) return;
     context.fillStyle = `rgba(255, 255, 255, ${alpha.current})`;
@@ -92,7 +92,7 @@ const LoadingCanvas = () => {
     handleResize();
     window.addEventListener('resize', handleResize);
     init();
-    animate(context);
+    animate();
     return () => window.removeEventListener('resize', handleResize);
   }, [animate]);
 
