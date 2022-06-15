@@ -25,11 +25,11 @@ export const deleteReservation = (id, equipmentId, date) => async (dispatch) => 
     return res.data;
   })
     .catch((err) => {
-      toastify(err.message, 'error');
-      if (err.status === 500) {
-        toastify('Session expired please login again');
+      if (err.response?.status === 500) {
+        toastify('Session expired please login again', 'info');
         dispatch(logOut());
       }
+      toastify(err.message, 'error');
     })
 );
 
@@ -64,11 +64,11 @@ export const createReservation = (data, currentTech) => async (dispatch) => (api
   return res.data;
 })
   .catch((err) => {
-    toastify(err.response?.data?.errors, 'error');
-    if (err.status === 500) {
-      toastify('Session expired please login again');
+    if (err.response?.status === 500) {
+      toastify('Session expired please login again', 'info');
       dispatch(logOut());
     }
+    toastify(err.response?.data?.errors, 'error');
     return false;
   })
 );

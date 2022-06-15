@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import style from './delete_equipment.module.scss';
 import { equipmentsQuery } from '../../logic/queries';
@@ -8,6 +8,7 @@ import { destroyEquipmentFromAPI } from '../../redux/equipment/equipmentAPI';
 const DeleteEquipment = () => {
   const { equipments } = useSelector((state) => state.equipment);
   const { refetch } = equipmentsQuery();
+  const dispatch = useDispatch();
   const columns = [
     {
       name: 'id',
@@ -26,7 +27,7 @@ const DeleteEquipment = () => {
           className={style['btn-delete']}
           onClick={((e) => {
             e.preventDefault();
-            destroyEquipmentFromAPI(row.id, refetch);
+            dispatch(destroyEquipmentFromAPI(row.id, refetch));
           })}
         >
           Delete

@@ -65,7 +65,7 @@ export const deleteToken = () => ({
   payload: null,
 });
 
-export const logOut = (dispatch) => {
+export const logOut = () => (dispatch) => {
   removeState('auth');
   dispatch(deleteToken());
 };

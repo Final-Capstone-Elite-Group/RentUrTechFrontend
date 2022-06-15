@@ -39,7 +39,7 @@ const Navigation = () => {
     dispatch(setMenu(true));
   };
   const handleLogout = () => {
-    dispatch(logOut);
+    dispatch(logOut());
   };
 
   return (
