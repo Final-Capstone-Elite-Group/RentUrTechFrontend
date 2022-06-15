@@ -19,7 +19,8 @@ const Navigation = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
-  const closedLocation = ['/', '/my-reservations', '/details/:id'];
+  const id = location.pathname.split('/').at(-1);
+  const closedLocation = ['/', '/my-reservations', `/details/${id}`];
 
   useEffect(() => {
     if (closedLocation.includes(location.pathname)) {

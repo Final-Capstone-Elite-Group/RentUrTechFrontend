@@ -26,11 +26,11 @@ const Login = () => {
       <div className={style.wrapper}>
         <form onSubmit={handleSubmit} className={style.form}>
           <div>
-            <h1>Login</h1>
+            <h1 data-testid="login-title">Login</h1>
             <div className={style.logo} />
           </div>
           <div className={style['form-group']}>
-            <span htmlFor="name">
+            <span data-testid="username" htmlFor="name">
               Username
             </span>
             <input type="text" id="name" data-testid="login-name" name="name" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} required />

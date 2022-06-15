@@ -80,6 +80,7 @@ const Carousel = ({ collection }) => {
   };
 
   const touchEndHandler = (e) => {
+    if (Math.abs(touchStart - e.changedTouches[0].clientY) < 100) return;
     if (touchStart - e.changedTouches[0].clientY < 0) {
       setFirst(spin(size * -1).move);
     } else {

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
 import reservationsReducer from './reservation/reservation';
 import authReducer from './user/user';
 import menuReducer from './menu/menu';
@@ -11,5 +12,6 @@ const store = configureStore({
     equipment: equipmentReducer,
     menu: menuReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 export default store;

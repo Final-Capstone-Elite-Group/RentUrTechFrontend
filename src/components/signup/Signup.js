@@ -31,7 +31,7 @@ const Signup = () => {
       <div className={style.wrapper}>
         <form onSubmit={handleSubmit} className={style.form}>
           <div>
-            <h1>Sign up</h1>
+            <h1 data-testid="signup-title">Sign up</h1>
             <div className={style.logo} />
           </div>
           <div className={style['form-group']}>
@@ -47,7 +47,7 @@ const Signup = () => {
             <input type="text" id="username" name="username" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} required />
           </div>
           <div className={style['form-group']}>
-            <span htmlFor="email">
+            <span data-testid="email" htmlFor="email">
               Email
             </span>
             <input type="email" id="email" name="email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} required />
