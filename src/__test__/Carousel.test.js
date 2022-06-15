@@ -92,7 +92,7 @@ describe('Carousel component', () => {
       },
     ];
     component = render(
-      <Carousel collection={collection} />
+      <Carousel collection={collection} />,
     );
   });
 
