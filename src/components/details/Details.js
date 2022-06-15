@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { BiLeftArrow } from 'react-icons/bi';
 import { GrCycle } from 'react-icons/gr';
@@ -19,32 +18,26 @@ const Details = () => {
     discover,
     chevron,
   } = styles;
-  const { currentTech, equipments } = useSelector((state) => state.equipment);
+  const { currentTech } = useSelector((state) => state.equipment);
   const dispatch = useDispatch();
   const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(currentEquipment(parseInt(id, 10)));
-  }, []);
-
+  dispatch(currentEquipment(parseInt(id, 10)));
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-
     // These options are needed to round to whole numbers if that's what you want.
     // minimumFractionDigits: 0,
     // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
     // maximumFractionDigits: 0,
     // (causes 2500.99 to be printed as $2,501)
   });
-
   let render;
   if (currentTech) {
     render = (
       <div className={detailsContainer}>
         <Link to="/">
           <Button style={{
-            display: 'flex', position: 'absolute', bottom: 0, left: 0,
+            display: 'flex', position: 'absolute', bottom: '50px', left: 0,
           }}
           >
             <BiLeftArrow />
@@ -99,15 +92,11 @@ const Details = () => {
         </div>
       </div>
     );
-  } else if (equipments.length > 0) {
-    render = 'loading';
   } else {
-    render = <Navigate push to="/" />;
+    render = <Navigate push to="404" />;
   }
-
   return (
     render
   );
 };
-
 export default Details;
