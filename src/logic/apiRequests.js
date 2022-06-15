@@ -2,7 +2,7 @@ import toastify from './toastify';
 import apiClient from './apiClient';
 import { currentEquipment, updateReservedDate, removeReservedDate } from '../redux/equipment/equipment';
 import { makeReservation, removeReservation } from '../redux/reservation/reservation';
-
+import { logOut } from '../redux/user/user';
 // Fetch Equipments from API
 export const fetchEquipments = async () => apiClient.get('/equipments')
   .then((response) => (response.data))
@@ -14,10 +14,7 @@ export const fetchEquipments = async () => apiClient.get('/equipments')
 // Fetch Reservations from API
 export const fetchReservations = async () => apiClient.get('/reservations')
   .then((response) => (response.data))
-  .then((res) => res.data.map((reserve) => reserve.attributes))
-  .catch((err) => {
-    toastify(err.message, 'error');
-  });
+  .then((res) => res.data.map((reserve) => reserve.attributes));
 
 // Delete a Reservation given the id
 export const deleteReservation = (id, equipmentId, date) => async (dispatch) => (
@@ -29,6 +26,10 @@ export const deleteReservation = (id, equipmentId, date) => async (dispatch) => 
   })
     .catch((err) => {
       toastify(err.message, 'error');
+      if (err.status === 500) {
+        toastify('Session expired please login again');
+        dispatch(logOut());
+      }
     })
 );
 
@@ -64,6 +65,10 @@ export const createReservation = (data, currentTech) => async (dispatch) => (api
 })
   .catch((err) => {
     toastify(err.response?.data?.errors, 'error');
+    if (err.status === 500) {
+      toastify('Session expired please login again');
+      dispatch(logOut());
+    }
     return false;
   })
 );
