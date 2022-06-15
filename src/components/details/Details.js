@@ -37,7 +37,7 @@ const Details = () => {
       <div className={detailsContainer}>
         <Link to="/">
           <Button style={{
-            display: 'flex', position: 'absolute', bottom: 0, left: 0,
+            display: 'flex', position: 'absolute', bottom: '50px', left: 0,
           }}
           >
             <BiLeftArrow />
