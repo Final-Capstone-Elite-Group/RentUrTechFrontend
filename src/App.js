@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -6,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Navigation from './components/navigation/Navigation';
+import { equipmentsQuery } from './logic/queries';
 import Signup from './components/signup/Signup';
 import Reservation from './components/reservation/Reservation';
 import ReservationParams from './components/reservation/ReservationParams';
@@ -16,9 +16,20 @@ import AddEquipment from './components/equipment/AddEquipment';
 import DeleteEquipment from './components/equipment/DeleteEquipment';
 import LoadingCanvas from './components/loading/LoadingCanvas';
 import './App.scss';
+import NotFound from './components/404/NotFound';
 
 const App = () => {
   const auth = useSelector((state) => state.auth);
+
+  // React Query hook to make Api call when page loads
+  const {
+    isLoading,
+  } = equipmentsQuery();
+
+  // What to render when page is loading data using React query
+  if (isLoading) {
+    return <LoadingCanvas />;
+  }
 
   return (
     <div className="App">
@@ -45,7 +56,7 @@ const App = () => {
         <Route path="/remove-equipment" element={<ProtectedRoute element={<DeleteEquipment />} isAllowed={!!auth?.token && auth?.user?.role.includes('admin')} />} />
         <Route path="/reservation" element={<ProtectedRoute element={<Reservation />} isAllowed={!!auth?.token} />} />
         <Route path="/reservation/:id" element={<ProtectedRoute element={<ReservationParams />} isAllowed={!!auth?.token} />} />
-        <Route path="*" element={<LoadingCanvas />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

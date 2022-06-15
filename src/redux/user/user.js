@@ -25,7 +25,7 @@ export const login = (payload) => ({
 });
 
 export const authenticateUser = (user) => async (dispatch) => {
-  await axios.post('http://localhost:3000/login', {
+  await axios.post('https://renturtech.herokuapp.com/login', {
     username: user.username,
     password: user.password,
   })
@@ -45,7 +45,7 @@ export const authenticateUser = (user) => async (dispatch) => {
 };
 
 export const postUserToAPI = (user) => async (dispatch) => {
-  await axios.post('http://localhost:3000/signup',
+  await axios.post('https://renturtech.herokuapp.com/signup',
     {
       user,
     })

@@ -48,6 +48,8 @@
       font-size: 0.9rem;
     }
 
+    @include slide-in();
+
     gap: 20px;
 
     h1 {
@@ -80,6 +82,8 @@
   gap: 10px;
   padding: 0 20px;
   border-radius: 30px;
+
+  @include fade-in();
 
   .cost {
     width: 140px;

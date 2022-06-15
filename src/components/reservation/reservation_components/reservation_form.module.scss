@@ -6,6 +6,8 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  @include slide-right();
+
   .error_message {
     color: red;
     height: 20px;

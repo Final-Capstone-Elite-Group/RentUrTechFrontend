@@ -328,7 +328,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                     <img
                       alt="tool"
                       class="image"
-                      src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c533787f3499541cdd2bd6da005bace4749ddb7/wireless_printer.jpeg"
+                      src="https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c533787f3499541cdd2bd6da005bace4749ddb7/wireless_printer.jpeg"
                     />
                   </figure>
                 </div>
@@ -440,7 +440,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                     <img
                       alt="tool"
                       class="image"
-                      src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee3004a8fe9fce926a806f65e4a87b9aa25c45af/turntable.jpeg"
+                      src="https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee3004a8fe9fce926a806f65e4a87b9aa25c45af/turntable.jpeg"
                     />
                   </figure>
                 </div>

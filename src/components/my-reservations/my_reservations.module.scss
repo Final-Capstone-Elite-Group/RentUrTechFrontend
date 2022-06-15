@@ -16,6 +16,8 @@
     flex-wrap: wrap;
     gap: 20px;
 
+    @include slide-in();
+
     h1 {
       flex: 1 1 100%;
       text-align: center;
@@ -37,7 +39,7 @@
       cursor: pointer;
 
       &:hover {
-        fill: $color-primary;
+        fill: $color-white;
       }
     }
 
@@ -55,7 +57,6 @@
 
       &:hover {
         background: $color-primary;
-        color: #fff;
         transform: translateY(-5px);
         z-index: 1000;
       }
