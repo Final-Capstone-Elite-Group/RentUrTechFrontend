@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 const handlers = [
-  rest.get('http://localhost:3000/equipments', (req, res, ctx) => res(
+  rest.get('https://renturtech.herokuapp.com/equipments', (req, res, ctx) => res(
     ctx.json({
       data: [
         {
@@ -19,7 +19,7 @@ const handlers = [
             created_at: '2022-06-08T19:42:08.103Z',
             updated_at: '2022-06-08T19:42:08.112Z',
             image: {
-              url: 'http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c533787f3499541cdd2bd6da005bace4749ddb7/wireless_printer.jpeg',
+              url: 'https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c533787f3499541cdd2bd6da005bace4749ddb7/wireless_printer.jpeg',
             },
           },
         },
@@ -38,7 +38,7 @@ const handlers = [
             created_at: '2022-06-08T19:42:08.067Z',
             updated_at: '2022-06-08T19:42:08.081Z',
             image: {
-              url: 'http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee3004a8fe9fce926a806f65e4a87b9aa25c45af/turntable.jpeg',
+              url: 'https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee3004a8fe9fce926a806f65e4a87b9aa25c45af/turntable.jpeg',
             },
           },
         }],
@@ -46,7 +46,7 @@ const handlers = [
     ctx.status(200),
   )),
 
-  rest.get('http://localhost:3000/reservations', (req, res, ctx) => res(
+  rest.get('https://renturtech.herokuapp.com/reservations', (req, res, ctx) => res(
     ctx.json({
       data: [
         {
@@ -62,7 +62,7 @@ const handlers = [
             equipment: {
               id: 4,
               title: 'GPS Drone',
-              url: 'http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d122d8fb7af2f04562aa6a26d728ed7d3fe8c64/drone1.jpg',
+              url: 'https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d122d8fb7af2f04562aa6a26d728ed7d3fe8c64/drone1.jpg',
               duration: 5,
             },
           },
@@ -71,7 +71,7 @@ const handlers = [
     ctx.status(200),
   )),
 
-  rest.post('http://localhost:3000/reservations', (req, res, ctx) => res(
+  rest.post('https://renturtech.herokuapp.com/reservations', (req, res, ctx) => res(
     ctx.json(
       {
         id: 12,
@@ -87,7 +87,7 @@ const handlers = [
     ctx.status(200),
   )),
 
-  rest.delete('http://localhost:3000/reservations/15', (req, res, ctx) => res(
+  rest.delete('https://renturtech.herokuapp.com/reservations/15', (req, res, ctx) => res(
     ctx.json(
       {
         data: 'Reservation destroyed successfully',
@@ -95,7 +95,7 @@ const handlers = [
     ),
     ctx.status(200),
   )),
-  rest.post('http://localhost:3000/login', (req, res, ctx) => res(
+  rest.post('https://renturtech.herokuapp.com/login', (req, res, ctx) => res(
     ctx.json(
       {
         user: {

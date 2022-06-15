@@ -1,15 +1,15 @@
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import { loadState } from './localStorage';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://renturtech.herokuapp.com',
 });
 
 apiClient.interceptors.request.use((config) => {
   const auth = loadState('auth');
-  config.headers.Authorization = auth ? `Bearer ${auth.token}` : '';
-  return config;
+  const newConfig = config;
+  newConfig.headers.Authorization = auth ? `Bearer ${auth.token}` : '';
+  return newConfig;
 });
 
 export default apiClient;

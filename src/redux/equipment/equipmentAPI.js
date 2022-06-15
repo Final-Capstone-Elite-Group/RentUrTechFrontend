@@ -4,15 +4,16 @@ import toastify from '../../logic/toastify';
 import { initEquipment } from './equipment';
 
 const initState = () => async (dispatch) => {
-  const response = await axios.get('http://localhost:3000/equipments');
+  const response = await axios.get('https://renturtech.herokuapp.com/equipments');
   dispatch(initEquipment(response.data.data));
 };
 
-const postEquipmentToAPI = (formData, config) => async () => {
-  axios.post('http://localhost:3000/equipments', formData, config)
+const postEquipmentToAPI = (formData, config, callback) => async () => {
+  axios.post('https://renturtech.herokuapp.com/equipments', formData, config)
     .then((res) => {
       if (res.status === 201) {
         toastify('Equipment Create successfully', 'success');
+        callback();
       }
     })
     .catch((e) => {

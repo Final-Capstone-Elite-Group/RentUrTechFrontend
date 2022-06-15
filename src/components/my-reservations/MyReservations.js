@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-props-no-spreading */
-// import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { reservationsQuery } from '../../logic/queries';
 import { deleteReservation } from '../../logic/apiRequests';
 import style from './my_reservations.module.scss';
+import LoadingCanvas from '../loading/LoadingCanvas';
 
 const MyReservations = () => {
   const reservations = useSelector((state) => state.reservation);
@@ -14,7 +13,7 @@ const MyReservations = () => {
   } = reservationsQuery();
 
   if (isLoading) {
-    return <h1>Loadingcvdvfdsssssssssssssssssdgdfg</h1>;
+    return <LoadingCanvas />;
   }
 
   return (

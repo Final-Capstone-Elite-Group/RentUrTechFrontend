@@ -12,6 +12,8 @@
   backdrop-filter: blur(11px);
   border-radius: 5px;
 
+  @include slide-in();
+
   div {
     &:nth-child(1) {
       display: flex;
@@ -19,10 +21,10 @@
       align-items: center;
 
       .logo {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
-        background-image: url('../../images/logo1.svg');
+        background-image: url('../../images/form_logo.svg');
         background-size: cover;
         background-repeat: no-repeat;
         opacity: 0.8;
@@ -81,6 +83,7 @@
   padding: 20px 0;
   justify-content: center;
   align-items: center;
+  background-color: $color-primary;
   background-image: url('../../images/background.jpg');
   background-size: cover;
 

@@ -51,7 +51,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
       >
         <img
           alt="logo"
-          src="logo1.svg"
+          src="main_logo.gif"
         />
       </div>
       <nav>
@@ -273,7 +273,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                     <img
                       alt="tool"
                       class="image"
-                      src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c533787f3499541cdd2bd6da005bace4749ddb7/wireless_printer.jpeg"
+                      src="https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c533787f3499541cdd2bd6da005bace4749ddb7/wireless_printer.jpeg"
                     />
                   </figure>
                 </div>
@@ -304,6 +304,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                 >
                   <a
                     aria-label="link-to-social"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -326,6 +328,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="#"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -348,6 +352,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="https://www.youtube.com/watch?v=9Xk39LNg304"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -379,7 +385,7 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                     <img
                       alt="tool"
                       class="image"
-                      src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee3004a8fe9fce926a806f65e4a87b9aa25c45af/turntable.jpeg"
+                      src="https://renturtech.herokuapp.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee3004a8fe9fce926a806f65e4a87b9aa25c45af/turntable.jpeg"
                     />
                   </figure>
                 </div>
@@ -410,6 +416,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                 >
                   <a
                     aria-label="link-to-social"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -432,6 +440,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="#"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"
@@ -454,6 +464,8 @@ exports[`App Renders Correctly and takes you to Tech page 1`] = `
                   <a
                     aria-label="link-to-social"
                     href="https://www.youtube.com/watch?v=Yaj1Mhj8mo4"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     <svg
                       fill="currentColor"

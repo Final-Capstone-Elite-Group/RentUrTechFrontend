@@ -1,5 +1,3 @@
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 export const equipmentSlice = createSlice({
@@ -7,22 +5,28 @@ export const equipmentSlice = createSlice({
   initialState: { equipments: [], currentTech: null },
   reducers: {
     initEquipment(state, action) {
-      state.equipments.push(...action.payload);
+      const newState = state;
+      newState.equipments = action.payload;
+      return newState;
     },
     currentEquipment(state, action) {
       if (state.currentTech?.id === action.payload) {
-        return;
+        return state;
       }
-      state.currentTech = state.equipments.filter(
+      const newState = state;
+      [newState.currentTech] = state.equipments.filter(
         (equipment) => equipment.id === action.payload,
-      )[0];
+      );
+      return newState;
     },
     updateReservedDate(state, action) {
       state.currentTech.dates_reserved.push(action.payload);
     },
     removeReservedDate(state, action) {
-      state.currentTech.dates_reserved = state.currentTech
+      const newState = state;
+      newState.currentTech.dates_reserved = state.currentTech
         .dates_reserved.filter((date) => date !== action.payload);
+      return newState;
     },
   },
 });

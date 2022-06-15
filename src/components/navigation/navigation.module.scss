@@ -1,7 +1,7 @@
 @use '../../sass/global.scss' as *;
 
 aside {
-  width: 200px;
+  width: 220px;
   background-color: white;
   position: fixed;
   left: 0;
@@ -9,11 +9,14 @@ aside {
   z-index: 5;
   height: 100vh;
   padding: 30px 0;
+  transform: translateX(0%);
+  opacity: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-right: 1px solid rgba(135, 136, 136, 0.151);
   border-radius: 0 10px 10px 0;
+  transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.2);
 
   nav {
     display: flex;
@@ -35,8 +38,10 @@ aside {
       align-items: center;
       gap: 1rem;
       padding: 10px 40px 10px 20px;
-      font-weight: 500;
-      font-size: 0.9rem;
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
       &::before {
         border-radius: 0 0 0 10px;
@@ -96,9 +101,9 @@ aside {
 }
 
 .close_menu {
-  width: 0;
-  height: 0;
-  display: none;
+  position: fixed !important;
+  transform: translateX(-100%);
+  opacity: 0;
 }
 
 .logo {
@@ -106,7 +111,7 @@ aside {
   cursor: pointer;
 
   img {
-    width: 120px;
+    width: 140px;
     border-radius: 10px;
   }
 }
@@ -144,6 +149,11 @@ aside {
     font-size: 0.8rem;
     color: white;
     box-shadow: 0 6px 18px -5px $color-primary;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -199,10 +209,23 @@ aside {
       white-space: nowrap;
       background-color: $color-primary;
       border-radius: 5px;
-      font-size: 0.8rem;
+      font-size: 1rem;
       box-shadow: 0 5px 15px -5px $color-primary;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
+}
+
+.user_login button:hover,
+.user_login a:hover {
+  transform: scale(1.05);
+}
+
+.nav_list li a:hover {
+  transform: scale(1.02);
+  background-color: $color-darkGray;
+  border-radius: 0 0 0 10px;
+  color: white;
 }
 
 .overlay {

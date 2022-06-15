@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/user/user';
@@ -24,7 +23,6 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className={style.wrapper}>
         <form onSubmit={handleSubmit} className={style.form}>
           <div>
