@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Should match Login component snapshoot 1`] = `
-<h1
-  data-testid="equipment-title"
->
-  Equipments
-</h1>
-`;
