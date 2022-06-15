@@ -1,18 +1,26 @@
 <!-- @format -->
-
+![](https://img.shields.io/static/v1?label=BY&message=JohnFTitor&color=blue)
+![](https://img.shields.io/static/v1?label=BY&message=LeonardoAlbornoz&color=purple)
+![](https://img.shields.io/static/v1?label=BY&message=JoseAbel&color=green)
+![](https://img.shields.io/static/v1?label=BY&message=NicolasGonzales&color=yellow)
+![](https://img.shields.io/static/v1?label=BY&message=ZeeshanHaider&color=red)
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Rent Ur Tech Front-end
+# RentUrTech React
 
-> "Rent Ur Tech Front-end" is the front end of the 'Rent Ur Tech' full stack project.
+> "RentUrTech React" is the front-end of the 'RentUrTech' full stack project(check the link to the back-end below). The main goal of this project is to provide users with an environment to reserve a specific product for a set amount of time. Thus, in this application users can create an account, get an authorization token, and retrieve all or one piece of equipment. They will be required to have an authorization token to manage their own reservations. For creating and destroying equipment, the user needs a proper role. Feel free to fork this project and modify it for your own use!
 
-## Back End
+## Desktop Preview
 
-#### Access the Front End using the following repo
+## Mobile Preview
+## Back-end Repository
+You can find the back-end API [in this Repo](https://github.com/Final-Capstone-Elite-Group/RentUrTecBackend). The back-end was made using Ruby on Rails.
 
 ## Built With
 
-- React / Redux
+- Languages: _**JavaScript, HTML & CSS**_
+- Frameworks: _**React & Redux**_
+- Technologies used: _**Visual Studio Code**_
 
 ## Getting Started
 
@@ -22,19 +30,26 @@
 
 - Clone this repo locally using git in the command line and the following command
 
-  git clone https://github.com/
-
+```bash
+> git clone git@github.com:Final-Capstone-Elite-Group/RentUrTechFrontend.git
+> cd RentUrTechBackend
+```
 - Alternatively, you can just download the complete zip file and extract the folder in your directory
 
 #### Step 2:
+- Download all dependencies to use the Project
+
+```bash
+> npm install
+```
+
+#### Step 3:
 
 In the project directory, you can run:
 
 ##### `npm start`
 
 Runs the app in the development mode.\
-Open [https://renturtech.herokuapp.com](https://renturtech.herokuapp.com) to view
-it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -53,44 +68,52 @@ See the section about
 [deployment](https://facebook.github.io/create-react-app/docs/deployment)
 for more information.
 
-##### `npm run eject`
+## Original Authors
 
-**Note: this is a one-way operation. Once you `eject`,
-you can't go back!**
 
-If you aren't satisfied with the build tool and
-configuration choices, you can `eject` at any time.
-This command will remove the single build dependency
-from your project.
+ ### Front-end Team
 
-Instead, it will copy all the configuration files and
-the transitive dependencies (webpack, Babel, ESLint,
-etc) right into your project so you have full control
-over them. All of the commands except `eject` will
-still work, but they will point to the copied scripts
-so you can tweak them. At this point you're on your
-own.
 
-You don't have to ever use `eject`. The curated feature
-set is suitable for small and middle deployments, and
-you shouldn't feel obligated to use this feature.
-However we understand that this tool wouldn't be useful
-if you couldn't customize it when you are ready for it.
+ 👤 **Zeeshan Haider**
 
-#### Learn More
+  Platform | Badge |
+ --- | --- |
+ **GitHub**   | [@zhadier](https://github.com/zhadier)
+ **LinkedIn** | [Zeeshan Haider](https://www.linkedin.com/in/zhadier39/)
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ 👤 **Nicolas Gonzalez**
 
-To learn React, check out the
-[React documentation](https://reactjs.org/).
+   Platform | Badge |
+ --- | --- |
+ **GitHub**   | [@Nicolaswg](https://github.com/Nicolaswg)
+ **Twitter**   | [@Nicolas54146830](https://twitter.com/Nicolas54146830)
+ **LinkedIn** | [nicolas-gonzalez](https://www.linkedin.com/in/nicolas-gonzalez-8623461a0/)
 
-## Authors
+ 👤 **LeonardoAlbornoz**
 
-👤 **Zeeshan Haider**
+ Platform | Badge |
+ --- | --- |
+ **GitHub**:   | [@Leboroz](https://github.com/leboroz)
+ **Twitter**:  | [@Leboroz](https://twitter.com/leboroz)
+ **LinkedIn**: | [Leonardo Albornoz](https://linkedin.com/in/leboroz)
 
-- GitHub: [@zhadier](https://github.com/zhadier)
-- LinkedIn: [Zeeshan Haider](https://www.linkedin.com/in/zhadier39/)
+
+### Back-end Team
+
+:bust_in_silhouette: **Andrés Felipe Arroyave Naranjo**
+
+ Platform | Badge |
+ --- | --- |
+ **GitHub**    | [@JohnFTitor](https://github.com/JohnFTitor)
+ **Twitter**   | [@johnftitor](https://twitter.com/johnftitor)
+ **LinkedIn**  | [Andres](https://www.linkedin.com/in/andresarroyavenaranjo/?locale=en_US)
+
+ 👤 **Jose Abel Ramirez**
+
+ Platform | Badge |
+ --- | --- |
+ **GitHub**   | [Jose Abel Ramirez](https://github.com/jose-Abel)
+ **LinkedIn** | [Jose Abel Ramirez Frontany](https://www.linkedin.com/in/joseabelramirezfrontany/)
 
 ## 🤝 Contributing
 
@@ -106,6 +129,7 @@ I would love to hear your thoughts and ideas 🖤
 
 ## Acknowledgments
 
+- Thank you to all our peers who helped us out through this wonderful journey at Microverse. 🌥️
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
