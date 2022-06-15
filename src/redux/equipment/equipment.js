@@ -7,7 +7,7 @@ export const equipmentSlice = createSlice({
   initialState: { equipments: [], currentTech: null },
   reducers: {
     initEquipment(state, action) {
-      state.equipments = action.payload;
+      state.equipments.push(...action.payload);
     },
     currentEquipment(state, action) {
       if (state.currentTech?.id === action.payload) {
