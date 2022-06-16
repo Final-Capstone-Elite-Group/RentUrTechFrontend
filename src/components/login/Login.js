@@ -37,7 +37,7 @@ const Login = () => {
           </div>
           <div className={style['form-group']}>
             <span htmlFor="username">
-              password
+              Password
             </span>
             <input type="password" id="password" data-testid="login-password" name="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} required />
           </div>
