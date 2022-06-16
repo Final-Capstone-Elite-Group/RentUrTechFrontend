@@ -1,0 +1,150 @@
+@use '../../sass/global' as *;
+
+.detailsContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-inline: 2vw;
+  padding-bottom: 2rem;
+
+  @include mq(md) {
+    flex-direction: row;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    padding: 2vw;
+    gap: 0.75rem;
+
+    @include mq(lg) {
+      gap: 1rem;
+    }
+
+    @include mq(xl) {
+      gap: 3rem;
+    }
+
+    h2 {
+      text-align: end;
+      font-size: 1.75rem;
+
+      @include mq(md) {
+        font-size: 2.75rem;
+      }
+    }
+
+    .discover {
+      color: #000;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background-color: #fff;
+      border: 0;
+      cursor: pointer;
+      font-size: 0.8rem;
+
+      @include mq(md) {
+        font-size: 0.85rem;
+      }
+
+      .chevron {
+        color: orange;
+      }
+    }
+
+    table {
+      width: 100%;
+
+      td {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px;
+        font-size: 0.8rem;
+
+        @include mq(lg) {
+          font-size: 1.15rem;
+        }
+      }
+
+      tr {
+        &:nth-child(odd) {
+          background-color: #eee;
+        }
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 2rem;
+      border: 0;
+      background-color: $color-primary;
+      color: #fff;
+      font-weight: 600;
+      margin-top: 50px;
+
+      svg {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .flex {
+    flex: 1.5 1;
+  }
+
+  .imageContainer {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 2vw;
+
+    span {
+      font-size: 1.5rem;
+
+      @include mq(lg) {
+        font-size: 3rem;
+      }
+    }
+
+    h6 {
+      font-size: 1rem;
+      text-align: center;
+      font-weight: 300;
+      letter-spacing: 1px;
+
+      @include mq(lg) {
+        font-size: 1.15rem;
+      }
+    }
+
+    figure {
+      width: 100%;
+      text-align: center;
+      max-height: 70vh;
+      overflow: hidden;
+      margin-bottom: 2rem;
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        aspect-ratio: 1 / 1;
+
+        @include mq(md) {
+          height: 50vh;
+        }
+      }
+    }
+  }
+}

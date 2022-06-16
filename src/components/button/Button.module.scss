@@ -1,0 +1,40 @@
+@use '../../sass/global' as *;
+
+.button {
+  display: none;
+  height: fit-content(0);
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+  border: 0;
+  padding: 20px;
+  background-color: $color-primary;
+  color: #fff;
+  font-size: 1rem;
+  width: 60px;
+  transition: 250ms ease;
+
+  &:hover {
+    width: 80px;
+    cursor: pointer;
+  }
+
+  @include mq(sm, min) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.right {
+    border-radius: 28px 0 0 28px;
+    justify-content: flex-start;
+  }
+
+  &[disabled] {
+    background-color: $color-lightGray;
+
+    &:hover {
+      width: 60px;
+      cursor: default;
+    }
+  }
+}

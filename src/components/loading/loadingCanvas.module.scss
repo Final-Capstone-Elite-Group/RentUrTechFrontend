@@ -1,0 +1,19 @@
+.canvas {
+  position: absolute;
+  inset: 0 0 0 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  cursor: pointer;
+}
+
+.message {
+  position: absolute;
+  width: 100%;
+  max-width: 320px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 51;
+  color: black;
+}

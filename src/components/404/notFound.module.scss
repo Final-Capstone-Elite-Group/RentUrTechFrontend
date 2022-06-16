@@ -1,0 +1,22 @@
+@use '../../sass/global.scss' as *;
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-primary;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+}

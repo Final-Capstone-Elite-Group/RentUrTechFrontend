@@ -1,0 +1,104 @@
+@use '../../../sass/global.scss' as *;
+
+.reserve_section {
+  width: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.reserve_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15%;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  gap: 30px;
+  text-align: center;
+  background-color: hsla(76, 98%, 32%, 0.897);
+
+  .search_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 20px;
+    top: 18px;
+    width: 42px;
+    background-color: white;
+    height: 34px;
+    border-radius: 50px;
+
+    svg {
+      fill: $color-primary;
+      transform: rotate(90deg);
+    }
+  }
+
+  .reserve_content {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+
+    @include mq('md', max) {
+      font-size: 0.9rem;
+    }
+
+    @include slide-in();
+
+    gap: 20px;
+
+    h1 {
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.479);
+      padding-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-size: 1.5rem;
+
+      @include mq('md', min) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      color: white;
+      font-size: 1rem;
+      line-height: 2.2;
+
+      @include mq('md', min) {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+.expenses {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  border-radius: 30px;
+
+  @include fade-in();
+
+  .cost {
+    width: 140px;
+    border-radius: 10px;
+    color: $color-darkGray;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, $color-lightGray, $color-primary);
+    padding: 15px 5px;
+    font-size: 1rem;
+
+    @include mq('md', max) {
+      font-size: 0.8rem;
+    }
+  }
+}

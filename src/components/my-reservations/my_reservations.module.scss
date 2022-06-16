@@ -1,0 +1,139 @@
+@use '../../sass/global.scss' as *;
+
+.my_reservations {
+  height: 100vh;
+  width: 100%;
+  overflow: scroll;
+
+  .my_reservations_scroll {
+    margin: 0 auto;
+    display: flex;
+    padding: 70px 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 95%;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @include slide-in();
+
+    h1 {
+      flex: 1 1 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+
+      @include mq('sm', max) {
+        font-size: 1.7rem;
+      }
+    }
+
+    @include mq('md', max) {
+      padding: 70px 10px;
+    }
+
+    .trash {
+      font-size: 1.5rem;
+      flex: 0 0 20px;
+      cursor: pointer;
+
+      &:hover {
+        fill: $color-white;
+      }
+    }
+
+    .reserve_container {
+      display: flex;
+      justify-content: center;
+      flex: 1 0 430px;
+      border: 2px solid rgb(6, 6, 36);
+      align-items: center;
+      padding: 30px 15px;
+      border-radius: 20px;
+      gap: 20px;
+      color: black;
+      background: linear-gradient(to bottom right, $color-lightGray, $color-primary);
+
+      &:hover {
+        background: $color-primary;
+        transform: translateY(-5px);
+        z-index: 1000;
+      }
+
+      @include mq('md', max) {
+        flex: 0 0 240px;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        height: 280px;
+      }
+
+      @include mq('sm', max) {
+        flex: 0 0 80%;
+        height: 300px;
+      }
+
+      .img_container {
+        width: 80px;
+        padding: 2px;
+        background-color: rgb(6, 6, 36);
+        display: flex;
+        flex: 0 0 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 100px;
+
+        @include mq('sm', max) {
+          flex-basis: 80px;
+          height: 80px;
+        }
+
+        img {
+          width: 100%;
+          border-radius: 100%;
+          height: 100%;
+        }
+      }
+
+      .desc_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+
+        h2 {
+          font-size: 1.4rem;
+
+          @include mq('md', max) {
+            font-size: 1.2rem;
+          }
+        }
+
+        .desc_info {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px 20px;
+
+          @include mq('md', max) {
+            flex-direction: column;
+          }
+
+          h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: 'Roboto', sans-serif;
+
+            @include mq('md', max) {
+              font-size: 0.8rem;
+            }
+
+            span {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}
