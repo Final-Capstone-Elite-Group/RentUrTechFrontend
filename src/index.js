@@ -31,3 +31,5 @@ root.render(
     </QueryClientProvider>
   </React.StrictMode>,
 );
+
+export default queryClient;
