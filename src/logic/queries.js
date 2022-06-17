@@ -32,7 +32,7 @@ export const reservationsQuery = () => {
       onError: (res) => {
         if (res.response.status === 401) {
           toastify('Session expired, please login again', 'info');
-          dispatch(logOut);
+          dispatch(logOut());
         } else {
           toastify(res.message, 'error');
         }
