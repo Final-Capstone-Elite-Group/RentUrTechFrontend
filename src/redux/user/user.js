@@ -1,6 +1,7 @@
 import axios from 'axios';
 import toastify from '../../logic/toastify';
 import { loadState, saveState, removeState } from '../../logic/localStorage';
+import queryClient from '../../logic/queryClient';
 
 const GET_USER = 'user/GET_USER';
 const POST_USER = 'user/POST_USER';
@@ -68,6 +69,7 @@ export const deleteToken = () => ({
 export const logOut = () => (dispatch) => {
   removeState('auth');
   dispatch(deleteToken());
+  queryClient.resetQueries('reservations_list');
 };
 
 const authReducer = (state = initialState, action) => {
