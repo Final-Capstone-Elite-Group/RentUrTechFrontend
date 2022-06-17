@@ -72,7 +72,9 @@ const Details = () => {
               <tr>
                 <td>
                   <h5>Duration</h5>
-                  {formatter.format(currentTech.duration)}
+                  {currentTech.duration}
+                  {' '}
+                  {currentTech.duration > 1 ? 'Days' : 'Day'}
                 </td>
               </tr>
             </tbody>
