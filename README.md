@@ -20,7 +20,7 @@
 
 ## Deployment
 
-You can find the app [live link here](https://renturtech.netlify.app/)
+You can find the app [live link here](https://renturtechrender.netlify.app/)
 
 ## Back-end Repository
 You can find the back-end API [in this Repo](https://github.com/Final-Capstone-Elite-Group/RentUrTechBackend). The back-end was made using Ruby on Rails.
